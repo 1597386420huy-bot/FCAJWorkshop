@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+{{> head }}
+  </head>
+  <body class="{{ bodyClass }}">
+{{> sidebar }}
+    <section id="body" class="main-area page-body">
+      <div class="padding highlightable">
+        <div id="body-inner" class="content-inner {{ contentClass }}">
+          <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span aria-hidden="true">☰</span> Menu</button>
+{{{ content }}}
+        </div>
+      </div>
+      {{{ edgeNav }}}
+    </section>
+    <script src="{{ base }}/js/main.js"></script>
+  </body>
+</html>

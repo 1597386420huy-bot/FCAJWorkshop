@@ -1,0 +1,11 @@
+<h1>{{ title }}</h1>
+{{{ body }}}
+{{#if avatar}}
+<img class="profile-photo" src="{{ avatar }}" alt="Profile photo">
+{{else}}
+<div class="profile-placeholder" role="img" aria-label="Profile photo (not set)"><span class="profile-head"></span><span class="profile-body"></span></div>
+{{/if}}
+<div class="report-links" id="report-content">
+  <h3>Report Content</h3>
+  {{{ reportLinks }}}
+</div>

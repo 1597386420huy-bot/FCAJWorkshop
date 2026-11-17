@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1c222a" />
+    <title>Security Groups and IAM Role :: Internship Report</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" />
+    <link rel="stylesheet" href="/css/theme.css" />
+
+  </head>
+  <body class="page-inner">
+    <nav class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar-header">
+        <a class="brand-logo" href="/" aria-label="AWS"><img src="/images/aws-logo-white.png" alt="AWS"></a>
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Close menu">×</button>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="search-by">Search pages</label>
+          <input id="search-by" type="text" placeholder="Search..." autocomplete="off" />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+        </div>
+      </div>
+      <div class="site-nav" id="site-nav">
+        <ul><li class="nav-item nav-top" data-search="1. worklog"><a href="/1-Worklog/"><b>1. </b>Worklog</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="1.1. week 1"><a href="/1-Worklog/1.1-Week1/"><b>1.1. </b>Week 1</a></li><li class="nav-item nav-child" data-search="1.2. week 2"><a href="/1-Worklog/1.2-Week2/"><b>1.2. </b>Week 2</a></li><li class="nav-item nav-child" data-search="1.3. week 3"><a href="/1-Worklog/1.3-Week3/"><b>1.3. </b>Week 3</a></li><li class="nav-item nav-child" data-search="1.4. week 4"><a href="/1-Worklog/1.4-Week4/"><b>1.4. </b>Week 4</a></li><li class="nav-item nav-child" data-search="1.5. week 5"><a href="/1-Worklog/1.5-Week5/"><b>1.5. </b>Week 5</a></li><li class="nav-item nav-child" data-search="1.6. week 6"><a href="/1-Worklog/1.6-Week6/"><b>1.6. </b>Week 6</a></li><li class="nav-item nav-child" data-search="1.7. week 7"><a href="/1-Worklog/1.7-Week7/"><b>1.7. </b>Week 7</a></li><li class="nav-item nav-child" data-search="1.8. week 8"><a href="/1-Worklog/1.8-Week8/"><b>1.8. </b>Week 8</a></li><li class="nav-item nav-child" data-search="1.9. week 9"><a href="/1-Worklog/1.9-Week9/"><b>1.9. </b>Week 9</a></li><li class="nav-item nav-child" data-search="1.10. week 10"><a href="/1-Worklog/1.10-Week10/"><b>1.10. </b>Week 10</a></li><li class="nav-item nav-child" data-search="1.11. week 11"><a href="/1-Worklog/1.11-Week11/"><b>1.11. </b>Week 11</a></li><li class="nav-item nav-child" data-search="1.12. week 12"><a href="/1-Worklog/1.12-Week12/"><b>1.12. </b>Week 12</a></li></ul></div></li><li class="nav-item nav-top" data-search="2. proposal"><a href="/2-Proposal/"><b>2. </b>Proposal</a></li><li class="nav-item nav-top" data-search="3. blogs posted"><a href="/3-BlogsPosted/"><b>3. </b>Blogs Posted</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="3.1. blog 1"><a href="/3-BlogsPosted/3.1-Blog1/"><b>3.1. </b>Blog 1</a></li><li class="nav-item nav-child" data-search="3.2. blog 2"><a href="/3-BlogsPosted/3.2-Blog2/"><b>3.2. </b>Blog 2</a></li><li class="nav-item nav-child" data-search="3.3. blog 3"><a href="/3-BlogsPosted/3.3-Blog3/"><b>3.3. </b>Blog 3</a></li></ul></div></li><li class="nav-item nav-top" data-search="4. events participated"><a href="/4-EventParticipated/"><b>4. </b>Events Participated</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="4.1. event 1"><a href="/4-EventParticipated/4.1-Event1/"><b>4.1. </b>Event 1</a></li><li class="nav-item nav-child" data-search="4.2. event 2"><a href="/4-EventParticipated/4.2-Event2/"><b>4.2. </b>Event 2</a></li></ul></div></li><li class="nav-item nav-top is-parent-active" data-search="5. workshop"><a href="/5-Workshop/"><b>5. </b>Workshop</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.1. introduction"><a href="/5-Workshop/5.1-Workshop-overview/"><b>5.1. </b>Introduction</a></li><li class="nav-item nav-child" data-search="5.2. prerequisites"><a href="/5-Workshop/5.2-Prerequisites/"><b>5.2. </b>Prerequisites</a></li><li class="nav-item nav-child is-parent-active" data-search="5.3. iam and vpc setup"><a href="/5-Workshop/5.3-IAM-VPC/"><b>5.3. </b>IAM and VPC Setup</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.3.1. create vpc and subnets"><a href="/5-Workshop/5.3-IAM-VPC/5.3.1-VPC/"><b>5.3.1. </b>Create VPC and Subnets</a></li><li class="nav-item nav-child is-current" data-search="5.3.2. security groups and iam role"><a href="/5-Workshop/5.3-IAM-VPC/5.3.2-Security-IAM/" aria-current="page"><b>5.3.2. </b>Security Groups and IAM Role</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.4. deploy amazon rds mysql"><a href="/5-Workshop/5.4-RDS/"><b>5.4. </b>Deploy Amazon RDS MySQL</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.4.1. create amazon rds mysql"><a href="/5-Workshop/5.4-RDS/5.4.1-Database/"><b>5.4.1. </b>Create Amazon RDS MySQL</a></li><li class="nav-item nav-child" data-search="5.4.2. prepare mysql dataset"><a href="/5-Workshop/5.4-RDS/5.4.2-Import/"><b>5.4.2. </b>Prepare MySQL Dataset</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.5. deploy spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/"><b>5.5. </b>Deploy Spring Boot on EC2</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.5.1. launch ec2, install dependencies and initialize rds"><a href="/5-Workshop/5.5-EC2-Backend/5.5.1-Instance/"><b>5.5.1. </b>Launch EC2, Install Dependencies and Initialize RDS</a></li><li class="nav-item nav-child" data-search="5.5.2. create cognito user pool"><a href="/5-Workshop/5.5-EC2-Backend/5.5.2-Cognito-Bootstrap/"><b>5.5.2. </b>Create Cognito User Pool</a></li><li class="nav-item nav-child" data-search="5.5.3. run spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/5.5.3-Backend/"><b>5.5.3. </b>Run Spring Boot on EC2</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.6. deploy amazon s3 storage"><a href="/5-Workshop/5.6-S3/"><b>5.6. </b>Deploy Amazon S3 Storage</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.6.1. create two amazon s3 buckets"><a href="/5-Workshop/5.6-S3/5.6.1-Buckets/"><b>5.6.1. </b>Create Two Amazon S3 Buckets</a></li><li class="nav-item nav-child" data-search="5.6.2. prepare and upload product images to s3"><a href="/5-Workshop/5.6-S3/5.6.2-Images/"><b>5.6.2. </b>Prepare and upload product images to S3</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.7. cloudfront and cognito integration"><a href="/5-Workshop/5.7-CloudFront-Cognito/"><b>5.7. </b>CloudFront and Cognito Integration</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.7.1. configure cloudfront origins, https and behaviors"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.1-CloudFront/"><b>5.7.1. </b>Configure CloudFront Origins, HTTPS and Behaviors</a></li><li class="nav-item nav-child" data-search="5.7.2. configure amazon cognito login for cloudfront"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.2-Cognito-Login/"><b>5.7.2. </b>Configure Amazon Cognito Login for CloudFront</a></li><li class="nav-item nav-child" data-search="5.7.3. integrate and deploy frontend, backend, cognito"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/"><b>5.7.3. </b>Integrate and deploy Frontend, Backend, Cognito</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.8. ci/cd, monitoring, and validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/"><b>5.8. </b>CI/CD, Monitoring, and Validation</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.8.1. connect github actions to aws with oidc"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.1-OIDC/"><b>5.8.1. </b>Connect GitHub Actions to AWS with OIDC</a></li><li class="nav-item nav-child" data-search="5.8.2. ci/cd deployment for the react frontend"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.2-Frontend/"><b>5.8.2. </b>CI/CD Deployment for the React Frontend</a></li><li class="nav-item nav-child" data-search="5.8.3. deploy backend spring boot with ci/cd"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/"><b>5.8.3. </b>Deploy Backend Spring Boot with CI/CD</a></li><li class="nav-item nav-child" data-search="5.8.4. cloudwatch monitoring and system validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.4-Monitoring/"><b>5.8.4. </b>CloudWatch Monitoring and System Validation</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.9. clean up aws resources"><a href="/5-Workshop/5.9-Cleanup/"><b>5.9. </b>Clean Up AWS Resources</a></li></ul></div></li><li class="nav-item nav-top" data-search="6. self-assessment"><a href="/6-Self-evaluation/"><b>6. </b>Self-Assessment</a></li><li class="nav-item nav-top" data-search="7. sharing and feedback"><a href="/7-Feedback/"><b>7. </b>Sharing and Feedback</a></li></ul>
+        <p class="empty-search" id="empty-search" hidden>No matching pages.</p>
+      </div>
+      <section class="sidebar-shortcuts">
+        <h3>More</h3>
+        <ul><li><a href="https://awsstudygroup.com/" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><img src="/images/aws-logo-white.png" alt=""></span>AWS Study Group - Blog</a></li><li><a href="https://www.facebook.com/groups/660548818043427" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22 0H2a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h10.7v-9.3H9.6V11h3.1V8.3c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.5.1 2.8.1v3.2h-1.9c-1.5 0-1.8.7-1.8 1.8V11h3.6l-.5 3.7h-3.1V24H22a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/></svg></span>AWS Study Group - FB Group</a></li></ul>
+      </section>
+      <section class="sidebar-footer">
+        <div><strong>Last updated</strong><br><span>18-11-2026</span></div>
+        <div><strong>Team</strong><br><span>First Cloud AI Journey</span></div>
+      </section>
+
+    </nav>
+    <button class="sidebar-shade" id="sidebar-shade" aria-label="Close menu" tabindex="-1"></button>
+
+    <section id="body" class="main-area page-body">
+      <div class="padding highlightable">
+        <div id="body-inner" class="content-inner section-content">
+          <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span aria-hidden="true">☰</span> Menu</button>
+<div class="breadcrumb"><a href="/">Internship Report</a><span aria-hidden="true">›</span><a href="/5-Workshop/">Workshop</a><span aria-hidden="true">›</span><a href="/5-Workshop/5.3-IAM-VPC/">IAM and VPC Setup</a><span aria-hidden="true">›</span><span aria-current="page">Security Groups and IAM Role</span></div>
+<h1>Security Groups and IAM Role</h1>
+<h2 id="step-1-create-security-groups">Step 1 – Create Security Groups</h2>
+<p>In <strong>AWS Console</strong>, select <strong>Asia Pacific (Singapore) – <code>ap-southeast-1</code></strong>, then open <strong>VPC → Security groups → Create security group</strong>. Create the two security groups below in order.</p>
+<h3 id="step-1-1-create-the-ec2-backend-security-group">Step 1.1 – Create the EC2 Backend Security Group</h3>
+<ol><li>Under <strong>Basic details</strong>, enter:</li></ol>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Console field</th><th>Value</th></tr></thead><tbody><tr><td><strong>Security group name</strong></td><td><code>techvina-ec2-sg</code></td></tr><tr><td><strong>Description</strong></td><td><code>Security group for TechVina Backend EC2</code></td></tr><tr><td><strong>VPC</strong></td><td>Select <code>techvina-vpc</code> (<code>10.20.0.0/16</code>), <strong>not the Default VPC</strong></td></tr></tbody></table></div>
+<p><code>techvina-vpc</code> is the <strong>VPC name</strong>, not the security group name. A security group name cannot be changed after creation.</p>
+<ol><li>Under <strong>Inbound rules</strong>, add <strong>two</strong> rules for HTTPS on Nginx and Let's Encrypt:</li></ol>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Type</th><th>Port</th><th>Source</th><th>Description</th></tr></thead><tbody><tr><td><code>HTTP</code></td><td><code>80</code></td><td><code>0.0.0.0/0</code></td><td><code>LetsEncrypt-HTTP</code></td></tr><tr><td><code>HTTPS</code></td><td><code>443</code></td><td>AWS-managed prefix list <code>com.amazonaws.global.cloudfront.origin-facing</code></td><td><code>Allow-CloudFront-HTTPS</code></td></tr></tbody></table></div>
+<p>Set <strong>Source type = Custom</strong>, search for <code>cloudfront.origin-facing</code>, and select the AWS-managed prefix list (for example <code>pl-31a34658</code> in Singapore). Do not copy a prefix list ID from another Region. <strong>Do not expose TCP 8080 publicly.</strong> Nginx will proxy HTTPS traffic on port 443 to Spring Boot at <code>127.0.0.1:8080</code>.</p>
+<p>Port <code>80</code> is used for HTTP-01 certificate issuance/renewal and HTTP-to-HTTPS redirects. Port <code>443</code> accepts HTTPS origin traffic only from CloudFront. <strong>5.7.1</strong> configures DuckDNS, Nginx, and the certificate after EC2 is launched.</p>
+<p>Security Group <strong>Description</strong> values must contain only accepted characters; <code>LetsEncrypt-HTTP</code> and <code>Allow-CloudFront-HTTPS</code> are valid descriptions.</p>
+<ol><li>Under <strong>Outbound rules</strong>, leave the AWS default rule unchanged:</li></ol>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Type</th><th>Destination</th></tr></thead><tbody><tr><td><code>All traffic</code></td><td><code>0.0.0.0/0</code></td></tr></tbody></table></div>
+<ol><li>Click <strong>Create security group</strong>. On its details page, confirm the name <code>techvina-ec2-sg</code>, VPC <code>techvina-vpc</code>, and the inbound <strong>TCP 80</strong> rule from <code>0.0.0.0/0</code> and <strong>TCP 443</strong> from the CloudFront prefix list. Do not add an inbound SSH <code>22</code> rule; this lab uses <strong>AWS Systems Manager Session Manager</strong> to access EC2.</li></ol>
+<h3 id="step-1-2-create-the-amazon-rds-mysql-security-group">Step 1.2 – Create the Amazon RDS MySQL Security Group</h3>
+<ol><li>Return to <strong>VPC → Security groups → Create security group</strong>. Under <strong>Basic details</strong>, enter:</li></ol>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td><strong>Security group name</strong></td><td><code>techvina-rds-sg</code></td></tr><tr><td><strong>Description</strong></td><td><code>Security group for TechVina RDS MySQL</code></td></tr><tr><td><strong>VPC</strong></td><td><code>techvina-vpc</code></td></tr></tbody></table></div>
+<ol><li>Under <strong>Inbound rules</strong>, choose <strong>Add rule</strong>:</li></ol>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td><strong>Type</strong></td><td><code>MYSQL/Aurora</code> (automatically sets Port <code>3306</code>), or <code>Custom TCP</code> with Port <code>3306</code></td></tr><tr><td><strong>Source type</strong></td><td><code>Custom</code></td></tr><tr><td><strong>Source</strong></td><td>Search for <code>techvina-ec2-sg</code> and select its <strong>Security Group ID (<code>sg-...</code>)</strong> within <code>techvina-vpc</code></td></tr><tr><td><strong>Description – optional</strong></td><td><code>MySQL access from TechVina EC2</code></td></tr></tbody></table></div>
+<p><strong>Do not choose <code>Anywhere-IPv4</code> or <code>0.0.0.0/0</code></strong> for MySQL. The source must be the EC2 security group, not your computer's IP address.</p>
+<ol><li>Leave <strong>Outbound rules</strong> at <code>All traffic → 0.0.0.0/0</code>, then click <strong>Create security group</strong>.</li></ol>
+<h3 id="step-1-3-verify-security-groups">Step 1.3 – Verify Security Groups</h3>
+<p>In <strong>VPC → Security groups</strong>, confirm that both security groups belong to <code>techvina-vpc</code>:</p>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Security Group</th><th>Inbound rule</th><th>Outbound rule</th></tr></thead><tbody><tr><td><code>techvina-ec2-sg</code></td><td>TCP <code>80</code> from <code>0.0.0.0/0</code>; TCP <code>443</code> from the CloudFront origin-facing prefix list</td><td><code>All traffic</code></td></tr><tr><td><code>techvina-rds-sg</code></td><td>TCP <code>3306</code> from <code>techvina-ec2-sg</code></td><td><code>All traffic</code></td></tr></tbody></table></div>
+<p><img src="/images/5-Workshop/5.3-IAM-VPC/5.3.2-Security-IAM/01-security-groups.png" alt="TechVina security groups" loading="lazy"></p>
+<h2 id="step-2-create-the-ec2-iam-role">Step 2 – Create the EC2 IAM Role</h2>
+<h3 id="step-2-1-create-the-role-and-attach-ssm-and-cloudwatch-permissions">Step 2.1 – Create the Role and attach SSM and CloudWatch permissions</h3>
+<ol><li>Open <strong>IAM → Roles → Create role</strong>. Under <strong>Trusted entity type</strong>, choose <strong>AWS service</strong>. Choose <strong>EC2</strong> for <strong>Service or use case</strong> and <strong>Use case</strong>, then select <strong>Next</strong>.</li><li>Under <strong>Add permissions</strong>, find and select both <strong><code>AmazonSSMManagedInstanceCore</code></strong> and <strong><code>CloudWatchAgentServerPolicy</code></strong>. Select <strong>Next</strong>.</li><li>Set <strong>Role name</strong> to <strong><code>techvina-ec2-ssm-role</code></strong>. Verify that both managed policies are selected, then choose <strong>Create role</strong>.</li></ol>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Policy</th><th>Purpose</th></tr></thead><tbody><tr><td><code>AmazonSSMManagedInstanceCore</code></td><td>Allows EC2 to use AWS Systems Manager, Session Manager, and receive SSM commands</td></tr><tr><td><code>CloudWatchAgentServerPolicy</code></td><td>Allows the CloudWatch Agent to send EC2 logs and metrics to CloudWatch</td></tr></tbody></table></div>
+<h3 id="step-2-2-add-read-only-access-to-the-backend-artifacts-s3-bucket">Step 2.2 – Add read-only access to the Backend Artifacts S3 bucket</h3>
+<ol><li>Open <strong>IAM → Roles → <code>techvina-ec2-ssm-role</code></strong>.</li><li>On the <strong>Permissions</strong> tab, choose <strong>Add permissions → Create inline policy</strong>, then open the <strong>JSON</strong> editor.</li><li>Paste the following policy. Replace <strong><code>&lt;AWS_ACCOUNT_ID&gt;</code></strong> with the AWS account ID of the lab account. Find it in the AWS Console account menu or run <code>aws sts get-caller-identity --query Account --output text</code> in CloudShell:</li></ol>
+<pre><code class="language-json">{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Sid&quot;: &quot;ReadTechVinaBackendReleases&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: &quot;s3:GetObject&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:s3:::techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;/releases/*&quot;
+    }
+  ]
+}</code></pre>
+<ol><li>Select <strong>Next</strong>, enter the policy name <strong><code>techvina-ec2-backend-s3-read-policy</code></strong>, and choose <strong>Create policy</strong>.</li></ol>
+<p>The ARN references the <strong><code>techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;</code></strong> bucket created in <strong>5.6.1</strong>. An IAM policy can be created before its referenced bucket exists. The bucket name in 5.6.1 must match this ARN exactly. If the bucket name changes because of a naming conflict, update the IAM policy ARN accordingly. The <code>s3:GetObject</code> permission is restricted to release objects under <code>releases/</code>.</p>
+<h3 id="step-2-3-grant-manual-frontend-s3-upload-permissions-to-ec2">Step 2.3 – Grant manual frontend S3 upload permissions to EC2</h3>
+<p>Under <strong>IAM → Roles → <code>techvina-ec2-ssm-role</code> → Permissions → Add permissions → Create inline policy → JSON</strong>, grant <code>s3:ListBucket</code> and <code>s3:PutObject</code> for the frontend bucket. These permissions are required to build on EC2 and upload <code>dist/</code> in <strong>5.7.3</strong>.</p>
+<pre><code class="language-json">{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Sid&quot;: &quot;ListFrontendBucket&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: &quot;s3:ListBucket&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:s3:::techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;&quot;
+    },
+    {
+      &quot;Sid&quot;: &quot;UploadFrontendObjects&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: &quot;s3:PutObject&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:s3:::techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;/*&quot;
+    }
+  ]
+}</code></pre>
+<p>Replace <code>&lt;AWS_ACCOUNT_ID&gt;</code> and name the policy <strong><code>techvina-frontend-s3-upload</code></strong>. Choose <strong>Create policy</strong>. This policy deliberately does not include <code>s3:DeleteObject</code>, because the manual sync in 5.7.3 does not use <code>--delete</code>.</p>
+<h3 id="step-2-4-verify-the-iam-role">Step 2.4 – Verify the IAM Role</h3>
+<p>Open <strong>IAM → Roles → <code>techvina-ec2-ssm-role</code> → Permissions</strong> and verify:</p>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Policy type</th><th>Policy name</th></tr></thead><tbody><tr><td>AWS managed</td><td><code>AmazonSSMManagedInstanceCore</code></td></tr><tr><td>AWS managed</td><td><code>CloudWatchAgentServerPolicy</code></td></tr><tr><td>Inline</td><td><code>techvina-ec2-backend-s3-read-policy</code></td></tr><tr><td>Inline</td><td><code>techvina-frontend-s3-upload</code></td></tr></tbody></table></div>
+<p><img src="/images/5-Workshop/5.3-IAM-VPC/5.3.2-Security-IAM/02-instance-role.png" alt="IAM instance role for EC2" loading="lazy"></p>
+<h2 id="step-3-validate">Step 3 – Validate</h2>
+<p>Both Security Groups must belong to the correct VPC. Do not allow public MySQL access. Confirm that <code>techvina-ec2-ssm-role</code> has both managed policies and both inline policies listed in Step 2.4.</p>
+
+        </div>
+      </div>
+      <a class="edge-navigation previous" href="/5-Workshop/5.3-IAM-VPC/5.3.1-VPC/" aria-label="Previous page: Create VPC and Subnets">‹</a><a class="edge-navigation next" href="/5-Workshop/5.4-RDS/" aria-label="Next page: Deploy Amazon RDS MySQL">›</a>
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

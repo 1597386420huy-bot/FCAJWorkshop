@@ -1,0 +1,12 @@
+{
+  "title": "Internship Report",
+  "lang": "en",
+  "baseURL": "",
+  "brand": "AWS",
+  "team": "First Cloud AI Journey",
+  "lastUpdated": "",
+  "links": [
+    { "label": "AWS Study Group - Blog", "url": "https://awsstudygroup.com/", "icon": "aws" },
+    { "label": "AWS Study Group - FB Group", "url": "https://www.facebook.com/groups/660548818043427", "icon": "facebook" }
+  ]
+}

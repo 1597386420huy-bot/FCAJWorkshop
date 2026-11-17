@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1c222a" />
+    <title>Configure CloudFront Origins, HTTPS and Behaviors :: Internship Report</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" />
+    <link rel="stylesheet" href="/css/theme.css" />
+
+  </head>
+  <body class="page-inner">
+    <nav class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar-header">
+        <a class="brand-logo" href="/" aria-label="AWS"><img src="/images/aws-logo-white.png" alt="AWS"></a>
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Close menu">×</button>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="search-by">Search pages</label>
+          <input id="search-by" type="text" placeholder="Search..." autocomplete="off" />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+        </div>
+      </div>
+      <div class="site-nav" id="site-nav">
+        <ul><li class="nav-item nav-top" data-search="1. worklog"><a href="/1-Worklog/"><b>1. </b>Worklog</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="1.1. week 1"><a href="/1-Worklog/1.1-Week1/"><b>1.1. </b>Week 1</a></li><li class="nav-item nav-child" data-search="1.2. week 2"><a href="/1-Worklog/1.2-Week2/"><b>1.2. </b>Week 2</a></li><li class="nav-item nav-child" data-search="1.3. week 3"><a href="/1-Worklog/1.3-Week3/"><b>1.3. </b>Week 3</a></li><li class="nav-item nav-child" data-search="1.4. week 4"><a href="/1-Worklog/1.4-Week4/"><b>1.4. </b>Week 4</a></li><li class="nav-item nav-child" data-search="1.5. week 5"><a href="/1-Worklog/1.5-Week5/"><b>1.5. </b>Week 5</a></li><li class="nav-item nav-child" data-search="1.6. week 6"><a href="/1-Worklog/1.6-Week6/"><b>1.6. </b>Week 6</a></li><li class="nav-item nav-child" data-search="1.7. week 7"><a href="/1-Worklog/1.7-Week7/"><b>1.7. </b>Week 7</a></li><li class="nav-item nav-child" data-search="1.8. week 8"><a href="/1-Worklog/1.8-Week8/"><b>1.8. </b>Week 8</a></li><li class="nav-item nav-child" data-search="1.9. week 9"><a href="/1-Worklog/1.9-Week9/"><b>1.9. </b>Week 9</a></li><li class="nav-item nav-child" data-search="1.10. week 10"><a href="/1-Worklog/1.10-Week10/"><b>1.10. </b>Week 10</a></li><li class="nav-item nav-child" data-search="1.11. week 11"><a href="/1-Worklog/1.11-Week11/"><b>1.11. </b>Week 11</a></li><li class="nav-item nav-child" data-search="1.12. week 12"><a href="/1-Worklog/1.12-Week12/"><b>1.12. </b>Week 12</a></li></ul></div></li><li class="nav-item nav-top" data-search="2. proposal"><a href="/2-Proposal/"><b>2. </b>Proposal</a></li><li class="nav-item nav-top" data-search="3. blogs posted"><a href="/3-BlogsPosted/"><b>3. </b>Blogs Posted</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="3.1. blog 1"><a href="/3-BlogsPosted/3.1-Blog1/"><b>3.1. </b>Blog 1</a></li><li class="nav-item nav-child" data-search="3.2. blog 2"><a href="/3-BlogsPosted/3.2-Blog2/"><b>3.2. </b>Blog 2</a></li><li class="nav-item nav-child" data-search="3.3. blog 3"><a href="/3-BlogsPosted/3.3-Blog3/"><b>3.3. </b>Blog 3</a></li></ul></div></li><li class="nav-item nav-top" data-search="4. events participated"><a href="/4-EventParticipated/"><b>4. </b>Events Participated</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="4.1. event 1"><a href="/4-EventParticipated/4.1-Event1/"><b>4.1. </b>Event 1</a></li><li class="nav-item nav-child" data-search="4.2. event 2"><a href="/4-EventParticipated/4.2-Event2/"><b>4.2. </b>Event 2</a></li></ul></div></li><li class="nav-item nav-top is-parent-active" data-search="5. workshop"><a href="/5-Workshop/"><b>5. </b>Workshop</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.1. introduction"><a href="/5-Workshop/5.1-Workshop-overview/"><b>5.1. </b>Introduction</a></li><li class="nav-item nav-child" data-search="5.2. prerequisites"><a href="/5-Workshop/5.2-Prerequisites/"><b>5.2. </b>Prerequisites</a></li><li class="nav-item nav-child" data-search="5.3. iam and vpc setup"><a href="/5-Workshop/5.3-IAM-VPC/"><b>5.3. </b>IAM and VPC Setup</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.3.1. create vpc and subnets"><a href="/5-Workshop/5.3-IAM-VPC/5.3.1-VPC/"><b>5.3.1. </b>Create VPC and Subnets</a></li><li class="nav-item nav-child" data-search="5.3.2. security groups and iam role"><a href="/5-Workshop/5.3-IAM-VPC/5.3.2-Security-IAM/"><b>5.3.2. </b>Security Groups and IAM Role</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.4. deploy amazon rds mysql"><a href="/5-Workshop/5.4-RDS/"><b>5.4. </b>Deploy Amazon RDS MySQL</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.4.1. create amazon rds mysql"><a href="/5-Workshop/5.4-RDS/5.4.1-Database/"><b>5.4.1. </b>Create Amazon RDS MySQL</a></li><li class="nav-item nav-child" data-search="5.4.2. prepare mysql dataset"><a href="/5-Workshop/5.4-RDS/5.4.2-Import/"><b>5.4.2. </b>Prepare MySQL Dataset</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.5. deploy spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/"><b>5.5. </b>Deploy Spring Boot on EC2</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.5.1. launch ec2, install dependencies and initialize rds"><a href="/5-Workshop/5.5-EC2-Backend/5.5.1-Instance/"><b>5.5.1. </b>Launch EC2, Install Dependencies and Initialize RDS</a></li><li class="nav-item nav-child" data-search="5.5.2. create cognito user pool"><a href="/5-Workshop/5.5-EC2-Backend/5.5.2-Cognito-Bootstrap/"><b>5.5.2. </b>Create Cognito User Pool</a></li><li class="nav-item nav-child" data-search="5.5.3. run spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/5.5.3-Backend/"><b>5.5.3. </b>Run Spring Boot on EC2</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.6. deploy amazon s3 storage"><a href="/5-Workshop/5.6-S3/"><b>5.6. </b>Deploy Amazon S3 Storage</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.6.1. create two amazon s3 buckets"><a href="/5-Workshop/5.6-S3/5.6.1-Buckets/"><b>5.6.1. </b>Create Two Amazon S3 Buckets</a></li><li class="nav-item nav-child" data-search="5.6.2. prepare and upload product images to s3"><a href="/5-Workshop/5.6-S3/5.6.2-Images/"><b>5.6.2. </b>Prepare and upload product images to S3</a></li></ul></div></li><li class="nav-item nav-child is-parent-active" data-search="5.7. cloudfront and cognito integration"><a href="/5-Workshop/5.7-CloudFront-Cognito/"><b>5.7. </b>CloudFront and Cognito Integration</a><div class="nav-children"><ul><li class="nav-item nav-child is-current" data-search="5.7.1. configure cloudfront origins, https and behaviors"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.1-CloudFront/" aria-current="page"><b>5.7.1. </b>Configure CloudFront Origins, HTTPS and Behaviors</a></li><li class="nav-item nav-child" data-search="5.7.2. configure amazon cognito login for cloudfront"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.2-Cognito-Login/"><b>5.7.2. </b>Configure Amazon Cognito Login for CloudFront</a></li><li class="nav-item nav-child" data-search="5.7.3. integrate and deploy frontend, backend, cognito"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/"><b>5.7.3. </b>Integrate and deploy Frontend, Backend, Cognito</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.8. ci/cd, monitoring, and validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/"><b>5.8. </b>CI/CD, Monitoring, and Validation</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.8.1. connect github actions to aws with oidc"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.1-OIDC/"><b>5.8.1. </b>Connect GitHub Actions to AWS with OIDC</a></li><li class="nav-item nav-child" data-search="5.8.2. ci/cd deployment for the react frontend"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.2-Frontend/"><b>5.8.2. </b>CI/CD Deployment for the React Frontend</a></li><li class="nav-item nav-child" data-search="5.8.3. deploy backend spring boot with ci/cd"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/"><b>5.8.3. </b>Deploy Backend Spring Boot with CI/CD</a></li><li class="nav-item nav-child" data-search="5.8.4. cloudwatch monitoring and system validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.4-Monitoring/"><b>5.8.4. </b>CloudWatch Monitoring and System Validation</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.9. clean up aws resources"><a href="/5-Workshop/5.9-Cleanup/"><b>5.9. </b>Clean Up AWS Resources</a></li></ul></div></li><li class="nav-item nav-top" data-search="6. self-assessment"><a href="/6-Self-evaluation/"><b>6. </b>Self-Assessment</a></li><li class="nav-item nav-top" data-search="7. sharing and feedback"><a href="/7-Feedback/"><b>7. </b>Sharing and Feedback</a></li></ul>
+        <p class="empty-search" id="empty-search" hidden>No matching pages.</p>
+      </div>
+      <section class="sidebar-shortcuts">
+        <h3>More</h3>
+        <ul><li><a href="https://awsstudygroup.com/" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><img src="/images/aws-logo-white.png" alt=""></span>AWS Study Group - Blog</a></li><li><a href="https://www.facebook.com/groups/660548818043427" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22 0H2a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h10.7v-9.3H9.6V11h3.1V8.3c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.5.1 2.8.1v3.2h-1.9c-1.5 0-1.8.7-1.8 1.8V11h3.6l-.5 3.7h-3.1V24H22a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/></svg></span>AWS Study Group - FB Group</a></li></ul>
+      </section>
+      <section class="sidebar-footer">
+        <div><strong>Last updated</strong><br><span>18-11-2026</span></div>
+        <div><strong>Team</strong><br><span>First Cloud AI Journey</span></div>
+      </section>
+
+    </nav>
+    <button class="sidebar-shade" id="sidebar-shade" aria-label="Close menu" tabindex="-1"></button>
+
+    <section id="body" class="main-area page-body">
+      <div class="padding highlightable">
+        <div id="body-inner" class="content-inner section-content">
+          <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span aria-hidden="true">☰</span> Menu</button>
+<div class="breadcrumb"><a href="/">Internship Report</a><span aria-hidden="true">›</span><a href="/5-Workshop/">Workshop</a><span aria-hidden="true">›</span><a href="/5-Workshop/5.7-CloudFront-Cognito/">CloudFront and Cognito Integration</a><span aria-hidden="true">›</span><span aria-current="page">Configure CloudFront Origins, HTTPS and Behaviors</span></div>
+<h1>Configure CloudFront Origins, HTTPS and Behaviors</h1>
+<h2 id="step-1-create-a-cloudfront-distribution-and-s3-origin">Step 1 – Create a CloudFront distribution and S3 origin</h2>
+<ol><li>Open <strong>CloudFront → Distributions → Create distribution</strong>.</li><li>Use the description <code>techvina-cloudfront</code> and select <strong><code>techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;</code></strong> as the first origin. Choose the S3 REST endpoint, not the website endpoint.</li><li>Select <strong>Origin access control settings (recommended)</strong>, create an OAC, and choose <code>Sign requests</code>.</li><li>Set the *<em>Default (</em>) cache behavior<strong> to </strong>Redirect HTTP to HTTPS<strong> and </strong>CachingOptimized<strong>. Set </strong>Default root object** to <code>index.html</code>.</li><li>Create the distribution and record its <strong>Distribution ID</strong> and domain (<code>dxxxxxxxxxxxxx.cloudfront.net</code>). The actual TechVina deployment uses the distribution <code>techvina-cloudfront</code> and domain <code>d3mmtr3bxttvgc.cloudfront.net</code>.</li></ol>
+<p>The finished distribution has <strong>two origins</strong>: one S3 origin serving the frontend and images, and one HTTPS custom origin for Spring Boot. The backend origin is added in Step 4.</p>
+<h2 id="step-2-grant-private-s3-access-through-oac">Step 2 – Grant private S3 access through OAC</h2>
+<ol><li>Open <strong>Origins</strong>, select the frontend S3 origin, and verify that OAC is configured.</li><li>If AWS Console offers <strong>Copy policy / Go to S3 bucket permissions</strong>, apply a bucket policy based on this template, substituting the Account ID and Distribution ID:</li></ol>
+<pre><code class="language-json">{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Sid&quot;: &quot;AllowCloudFrontReadFrontend&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Principal&quot;: { &quot;Service&quot;: &quot;cloudfront.amazonaws.com&quot; },
+      &quot;Action&quot;: &quot;s3:GetObject&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:s3:::techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;/*&quot;,
+      &quot;Condition&quot;: {
+        &quot;StringEquals&quot;: {
+          &quot;AWS:SourceArn&quot;: &quot;arn:aws:cloudfront::&lt;AWS_ACCOUNT_ID&gt;:distribution/&lt;CF_DISTRIBUTION_ID&gt;&quot;
+        }
+      }
+    }
+  ]
+}</code></pre>
+<ol><li>Keep <strong>Block all public access</strong> enabled. Test an image already uploaded in 5.6.2:</li></ol>
+<pre><code class="language-text">https://&lt;CF_DOMAIN&gt;/images/products/xiaomi/xiaomi-series/xiaomi-15/image_1262703568.webp</code></pre>
+<p>The image should load through CloudFront while a direct unauthenticated S3 object URL remains inaccessible.</p>
+<h2 id="step-3-configure-duckdns-and-https-for-ec2">Step 3 – Configure DuckDNS and HTTPS for EC2</h2>
+<h3 id="step-3-1-create-the-duckdns-hostname">Step 3.1 – Create the DuckDNS hostname</h3>
+<ol><li>In <strong>DuckDNS</strong>, create a subdomain using the pattern <code>techvina-api-&lt;AWS_ACCOUNT_ID&gt;</code>.</li><li>Point the hostname to the <strong>Public IPv4</strong> of <code>techvina-ec2-backend</code> and save it. The hostname used in the actual deployment is:</li></ol>
+<pre><code class="language-text">techvina-api-668668940018.duckdns.org</code></pre>
+<ol><li>Connect to EC2 using Session Manager as <code>ubuntu</code> and verify the IPv4 resolution:</li></ol>
+<pre><code class="language-bash">getent ahostsv4 techvina-api-&lt;AWS_ACCOUNT_ID&gt;.duckdns.org | head -n 1</code></pre>
+<p>The returned address must match the instance public IPv4. Using a dynamic DNS hostname avoids configuring CloudFront with a temporary EC2 public DNS name that can change after Stop/Start.</p>
+<h3 id="step-3-2-set-up-automatic-duckdns-updates">Step 3.2 – Set up automatic DuckDNS updates</h3>
+<p>Create a root-only token file:</p>
+<pre><code class="language-bash">sudo install -d -m 700 /etc/techvina/duckdns
+sudo nano /etc/techvina/duckdns/token
+sudo chmod 600 /etc/techvina/duckdns/token</code></pre>
+<p>Enter your own DuckDNS token. Do not include it in the workshop, GitHub, logs, or screenshots.</p>
+<p>Create <code>/usr/local/sbin/techvina-duckdns-update.sh</code>:</p>
+<pre><code class="language-bash">sudo nano /usr/local/sbin/techvina-duckdns-update.sh</code></pre>
+<pre><code class="language-bash">#!/usr/bin/env bash
+set -euo pipefail
+DOMAIN=&quot;techvina-api-&lt;AWS_ACCOUNT_ID&gt;&quot;
+TOKEN_FILE=&quot;/etc/techvina/duckdns/token&quot;
+TOKEN=&quot;$(tr -d '\r\n' &lt; &quot;$TOKEN_FILE&quot;)&quot;
+if [[ ! &quot;$TOKEN&quot; =~ ^[a-zA-Z0-9-]+$ ]]; then
+  echo &quot;Invalid DuckDNS token&quot; &gt;&amp;2
+  exit 1
+fi
+RESPONSE=&quot;$(
+  printf 'url = &quot;https://www.duckdns.org/update?domains=%s&amp;token=%s&amp;ip=&quot;\n' &quot;$DOMAIN&quot; &quot;$TOKEN&quot; \
+    | curl --fail --silent --show-error --max-time 20 --config -
+)&quot;
+if [[ &quot;$RESPONSE&quot; == &quot;OK&quot; ]]; then
+  echo &quot;DuckDNS update OK&quot;
+else
+  echo &quot;DuckDNS update failed&quot; &gt;&amp;2
+  exit 1
+fi</code></pre>
+<p>Replace <code>&lt;AWS_ACCOUNT_ID&gt;</code> with your account ID, then make the script executable and test it:</p>
+<pre><code class="language-bash">sudo chmod 700 /usr/local/sbin/techvina-duckdns-update.sh
+sudo /usr/local/sbin/techvina-duckdns-update.sh</code></pre>
+<p><strong>Verified output:</strong> <code>DuckDNS update OK</code>.</p>
+<p>Create <code>/etc/systemd/system/techvina-duckdns-update.service</code>:</p>
+<pre><code class="language-ini">[Unit]
+Description=TechVina DuckDNS IP Update
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/local/sbin/techvina-duckdns-update.sh</code></pre>
+<p>Create <code>/etc/systemd/system/techvina-duckdns-update.timer</code>:</p>
+<pre><code class="language-ini">[Unit]
+Description=TechVina DuckDNS Update Timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=techvina-duckdns-update.service
+
+[Install]
+WantedBy=timers.target</code></pre>
+<p>Verify, reload systemd, and enable the timer:</p>
+<pre><code class="language-bash">sudo systemd-analyze verify /etc/systemd/system/techvina-duckdns-update.service /etc/systemd/system/techvina-duckdns-update.timer
+sudo systemctl daemon-reload
+sudo systemctl enable --now techvina-duckdns-update.timer
+systemctl list-timers --all | grep techvina-duckdns</code></pre>
+<h3 id="step-3-3-set-up-nginx-and-let-s-encrypt">Step 3.3 – Set up Nginx and Let's Encrypt</h3>
+<p>The EC2 Security Group configured in <strong>5.3.2</strong> must allow <strong>TCP 80 from <code>0.0.0.0/0</code></strong> for HTTP-01 certificate issuance/renewal, and <strong>TCP 443 from the CloudFront origin-facing prefix list</strong>. Spring Boot continues to run on <code>127.0.0.1:8080</code>; port 8080 is not exposed publicly.</p>
+<p>Install Nginx and Certbot:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y nginx certbot python3-certbot-nginx</code></pre>
+<p>Create <code>/etc/nginx/sites-available/techvina-backend</code>:</p>
+<pre><code class="language-nginx">server {
+    listen 80;
+    server_name techvina-api-&lt;AWS_ACCOUNT_ID&gt;.duckdns.org;
+
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}</code></pre>
+<p>Replace the Account ID, activate Nginx, and issue the certificate:</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/techvina-backend /etc/nginx/sites-enabled/techvina-backend
+sudo nginx -t
+sudo systemctl reload nginx
+sudo certbot --nginx -d techvina-api-&lt;AWS_ACCOUNT_ID&gt;.duckdns.org</code></pre>
+<p>Choose <strong>Redirect HTTP to HTTPS</strong> when prompted. Certbot adds the TLS configuration and manages automated renewal. Verify:</p>
+<pre><code class="language-bash">sudo nginx -t
+sudo systemctl status nginx --no-pager</code></pre>
+<p>Before restricting origin port 443 to CloudFront, the actual deployment verified <code>https://techvina-api-668668940018.duckdns.org/actuator/health</code> returned <strong>HTTP 200</strong> and <code>{&quot;status&quot;:&quot;UP&quot;}</code>. Requests to HTTP port 80 redirected with <code>301</code> to HTTPS.</p>
+<h2 id="step-4-create-the-backend-https-origin">Step 4 – Create the backend HTTPS origin</h2>
+<p>Under the distribution, open <strong>Origins → Create origin</strong>:</p>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Origin domain</td><td><code>techvina-api-&lt;AWS_ACCOUNT_ID&gt;.duckdns.org</code> (without <code>https://</code>)</td></tr><tr><td>Origin type</td><td><code>Custom origin</code></td></tr><tr><td>Name</td><td><code>techvina-ec2-backend</code></td></tr><tr><td>Protocol</td><td><strong>HTTPS only</strong></td></tr><tr><td>HTTPS port</td><td><code>443</code></td></tr><tr><td>Minimum Origin SSL protocol</td><td><code>TLSv1.2</code></td></tr><tr><td>Origin path</td><td>Empty</td></tr><tr><td>Origin IP address type</td><td><code>IPv4-only</code></td></tr></tbody></table></div>
+<p>Keep the default timeouts, do not add secret custom headers, and choose <strong>Create origin</strong>. The Origin domain must match the hostname on the valid TLS certificate.</p>
+<h2 id="step-5-create-the-api-behavior">Step 5 – Create the <code>/api/*</code> behavior</h2>
+<p>Open <strong>Behaviors → Create behavior</strong>:</p>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Path pattern</td><td><code>/api/*</code></td></tr><tr><td>Origin</td><td><code>techvina-ec2-backend</code></td></tr><tr><td>Viewer protocol policy</td><td><code>Redirect HTTP to HTTPS</code></td></tr><tr><td>Allowed HTTP methods</td><td><code>GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE</code></td></tr><tr><td>Cache HTTP OPTIONS</td><td>Not selected</td></tr><tr><td>Cache policy</td><td><code>CachingDisabled</code></td></tr><tr><td>Origin request policy</td><td><code>AllViewerExceptHostHeader</code></td></tr><tr><td>Response headers policy</td><td>None</td></tr></tbody></table></div>
+<p><code>AllViewerExceptHostHeader</code> forwards the required headers (including <code>Authorization</code>), cookies and query strings while using the DuckDNS host at the origin, which is appropriate for TLS and Nginx.</p>
+<p>Verify the ordered behaviors:</p>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Precedence</th><th>Path pattern</th><th>Origin</th></tr></thead><tbody><tr><td><code>0</code></td><td><code>/api/*</code></td><td><code>techvina-ec2-backend</code></td></tr><tr><td><code>1</code></td><td><code>Default (*)</code></td><td>Frontend S3 + images</td></tr></tbody></table></div>
+<p><img src="/images/5-Workshop/5.7-CloudFront-Cognito/5.7.1-CloudFront/04-cloudfront-behaviors-actual.png" alt="TechVina cache behavior precedence" loading="lazy"></p>
+<p>Test:</p>
+<pre><code class="language-text">https://&lt;CF_DOMAIN&gt;/api/san-pham/noi-bat</code></pre>
+<p><strong>Actual result:</strong> HTTP 200 with JSON for <strong>four featured products</strong>. Dynamic API responses are not cached by CloudFront.</p>
+<h2 id="step-6-create-a-cloudfront-function-for-react-router">Step 6 – Create a CloudFront Function for React Router</h2>
+<p>Routes such as <code>/login</code> and <code>/san-pham/21/21</code> are handled by React Router, not by individual S3 files. Open <strong>CloudFront → Functions → Create function</strong>:</p>
+<ul><li><strong>Function name:</strong> <code>techvina-spa-routing</code></li><li><strong>Runtime:</strong> <code>cloudfront-js-2.0</code></li></ul>
+<p>In <strong>Build (Development)</strong> replace the example code with:</p>
+<pre><code class="language-javascript">function handler(event) {
+    var request = event.request;
+    var uri = request.uri;
+
+    if (
+        uri === '/api' || uri.startsWith('/api/') ||
+        uri === '/images' || uri.startsWith('/images/') ||
+        uri === '/assets' || uri.startsWith('/assets/')
+    ) {
+        return request;
+    }
+
+    var lastSegment = uri.substring(uri.lastIndexOf('/') + 1);
+    if (uri !== '/' &amp;&amp; !lastSegment.includes('.')) {
+        request.uri = '/index.html';
+    }
+
+    return request;
+}</code></pre>
+<ol><li>Choose <strong>Save changes</strong>.</li><li>Open <strong>Test</strong> in <strong>Development</strong>, simulate <code>GET /san-pham/21/21</code>, and choose <strong>Run test</strong>. Verify <code>Status = Success</code> and <code>request.uri = &quot;/index.html&quot;</code>.</li><li>Choose <strong>Publish → Publish function</strong> to promote the tested code to <code>LIVE</code>.</li><li>Choose <strong>Add association</strong>, select the TechVina distribution, <strong>Event type = Viewer request</strong>, and *<em>Cache behavior = Default (</em>)<strong>. If a replacement warning appears, first inspect </strong>Behaviors → Default (<em>) → Edit → Function associations</em>* to check for an existing function.</li><li>Choose <strong>Add association</strong> and allow the distribution configuration to deploy.</li></ol>
+<p><img src="/images/5-Workshop/5.7-CloudFront-Cognito/5.7.1-CloudFront/05-spa-function-test.png" alt="Successful SPA Function test" loading="lazy"></p>
+<p>Associate the function only with *<em>Default (</em>)**, not <code>/api/*</code>. The function preserves <code>/assets/...</code>, <code>/images/...</code> and actual file URLs. Once the frontend is uploaded in 5.7.3, <code>/san-pham/21/21</code> can render the product page instead of S3's XML <code>AccessDenied</code> response.</p>
+<h2 id="step-7-verify-cloudfront-routing">Step 7 – Verify CloudFront routing</h2>
+<ol><li>Open <code>https://&lt;CF_DOMAIN&gt;/images/products/xiaomi/xiaomi-series/xiaomi-15/image_1262703568.webp</code> to verify image delivery from S3.</li><li>Open <code>https://&lt;CF_DOMAIN&gt;/api/san-pham/noi-bat</code> to verify the Spring Boot JSON response through the HTTPS origin.</li><li>Verify the S3 and <code>techvina-ec2-backend</code> origins and the order of <code>/api/*</code> and <code>Default (*)</code> behaviors.</li><li>Once the frontend build has been deployed in <strong>5.7.3</strong>, test <code>/</code>, <code>/login</code>, <code>/san-pham/21/21</code>, and <code>/assets/</code>.</li></ol>
+
+        </div>
+      </div>
+      <a class="edge-navigation previous" href="/5-Workshop/5.7-CloudFront-Cognito/" aria-label="Previous page: CloudFront and Cognito Integration">‹</a><a class="edge-navigation next" href="/5-Workshop/5.7-CloudFront-Cognito/5.7.2-Cognito-Login/" aria-label="Next page: Configure Amazon Cognito Login for CloudFront">›</a>
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

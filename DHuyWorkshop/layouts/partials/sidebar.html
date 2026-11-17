@@ -1,0 +1,18 @@
+    <nav class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar-header">
+        <a class="brand-logo" href="{{ base }}/" aria-label="{{ site.brand }}"><img src="{{ base }}/images/aws-logo-white.png" alt="{{ site.brand }}"></a>
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Close menu">×</button>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="search-by">Search pages</label>
+          <input id="search-by" type="text" placeholder="Search..." autocomplete="off" />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+        </div>
+      </div>
+      <div class="site-nav" id="site-nav">
+        {{{ nav }}}
+        <p class="empty-search" id="empty-search" hidden>No matching pages.</p>
+      </div>
+{{> footer }}
+    </nav>
+    <button class="sidebar-shade" id="sidebar-shade" aria-label="Close menu" tabindex="-1"></button>

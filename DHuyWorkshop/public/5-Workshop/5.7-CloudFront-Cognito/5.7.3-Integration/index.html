@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1c222a" />
+    <title>Integrate and deploy Frontend, Backend, Cognito :: Internship Report</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" />
+    <link rel="stylesheet" href="/css/theme.css" />
+
+  </head>
+  <body class="page-inner">
+    <nav class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar-header">
+        <a class="brand-logo" href="/" aria-label="AWS"><img src="/images/aws-logo-white.png" alt="AWS"></a>
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Close menu">×</button>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="search-by">Search pages</label>
+          <input id="search-by" type="text" placeholder="Search..." autocomplete="off" />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+        </div>
+      </div>
+      <div class="site-nav" id="site-nav">
+        <ul><li class="nav-item nav-top" data-search="1. worklog"><a href="/1-Worklog/"><b>1. </b>Worklog</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="1.1. week 1"><a href="/1-Worklog/1.1-Week1/"><b>1.1. </b>Week 1</a></li><li class="nav-item nav-child" data-search="1.2. week 2"><a href="/1-Worklog/1.2-Week2/"><b>1.2. </b>Week 2</a></li><li class="nav-item nav-child" data-search="1.3. week 3"><a href="/1-Worklog/1.3-Week3/"><b>1.3. </b>Week 3</a></li><li class="nav-item nav-child" data-search="1.4. week 4"><a href="/1-Worklog/1.4-Week4/"><b>1.4. </b>Week 4</a></li><li class="nav-item nav-child" data-search="1.5. week 5"><a href="/1-Worklog/1.5-Week5/"><b>1.5. </b>Week 5</a></li><li class="nav-item nav-child" data-search="1.6. week 6"><a href="/1-Worklog/1.6-Week6/"><b>1.6. </b>Week 6</a></li><li class="nav-item nav-child" data-search="1.7. week 7"><a href="/1-Worklog/1.7-Week7/"><b>1.7. </b>Week 7</a></li><li class="nav-item nav-child" data-search="1.8. week 8"><a href="/1-Worklog/1.8-Week8/"><b>1.8. </b>Week 8</a></li><li class="nav-item nav-child" data-search="1.9. week 9"><a href="/1-Worklog/1.9-Week9/"><b>1.9. </b>Week 9</a></li><li class="nav-item nav-child" data-search="1.10. week 10"><a href="/1-Worklog/1.10-Week10/"><b>1.10. </b>Week 10</a></li><li class="nav-item nav-child" data-search="1.11. week 11"><a href="/1-Worklog/1.11-Week11/"><b>1.11. </b>Week 11</a></li><li class="nav-item nav-child" data-search="1.12. week 12"><a href="/1-Worklog/1.12-Week12/"><b>1.12. </b>Week 12</a></li></ul></div></li><li class="nav-item nav-top" data-search="2. proposal"><a href="/2-Proposal/"><b>2. </b>Proposal</a></li><li class="nav-item nav-top" data-search="3. blogs posted"><a href="/3-BlogsPosted/"><b>3. </b>Blogs Posted</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="3.1. blog 1"><a href="/3-BlogsPosted/3.1-Blog1/"><b>3.1. </b>Blog 1</a></li><li class="nav-item nav-child" data-search="3.2. blog 2"><a href="/3-BlogsPosted/3.2-Blog2/"><b>3.2. </b>Blog 2</a></li><li class="nav-item nav-child" data-search="3.3. blog 3"><a href="/3-BlogsPosted/3.3-Blog3/"><b>3.3. </b>Blog 3</a></li></ul></div></li><li class="nav-item nav-top" data-search="4. events participated"><a href="/4-EventParticipated/"><b>4. </b>Events Participated</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="4.1. event 1"><a href="/4-EventParticipated/4.1-Event1/"><b>4.1. </b>Event 1</a></li><li class="nav-item nav-child" data-search="4.2. event 2"><a href="/4-EventParticipated/4.2-Event2/"><b>4.2. </b>Event 2</a></li></ul></div></li><li class="nav-item nav-top is-parent-active" data-search="5. workshop"><a href="/5-Workshop/"><b>5. </b>Workshop</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.1. introduction"><a href="/5-Workshop/5.1-Workshop-overview/"><b>5.1. </b>Introduction</a></li><li class="nav-item nav-child" data-search="5.2. prerequisites"><a href="/5-Workshop/5.2-Prerequisites/"><b>5.2. </b>Prerequisites</a></li><li class="nav-item nav-child" data-search="5.3. iam and vpc setup"><a href="/5-Workshop/5.3-IAM-VPC/"><b>5.3. </b>IAM and VPC Setup</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.3.1. create vpc and subnets"><a href="/5-Workshop/5.3-IAM-VPC/5.3.1-VPC/"><b>5.3.1. </b>Create VPC and Subnets</a></li><li class="nav-item nav-child" data-search="5.3.2. security groups and iam role"><a href="/5-Workshop/5.3-IAM-VPC/5.3.2-Security-IAM/"><b>5.3.2. </b>Security Groups and IAM Role</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.4. deploy amazon rds mysql"><a href="/5-Workshop/5.4-RDS/"><b>5.4. </b>Deploy Amazon RDS MySQL</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.4.1. create amazon rds mysql"><a href="/5-Workshop/5.4-RDS/5.4.1-Database/"><b>5.4.1. </b>Create Amazon RDS MySQL</a></li><li class="nav-item nav-child" data-search="5.4.2. prepare mysql dataset"><a href="/5-Workshop/5.4-RDS/5.4.2-Import/"><b>5.4.2. </b>Prepare MySQL Dataset</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.5. deploy spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/"><b>5.5. </b>Deploy Spring Boot on EC2</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.5.1. launch ec2, install dependencies and initialize rds"><a href="/5-Workshop/5.5-EC2-Backend/5.5.1-Instance/"><b>5.5.1. </b>Launch EC2, Install Dependencies and Initialize RDS</a></li><li class="nav-item nav-child" data-search="5.5.2. create cognito user pool"><a href="/5-Workshop/5.5-EC2-Backend/5.5.2-Cognito-Bootstrap/"><b>5.5.2. </b>Create Cognito User Pool</a></li><li class="nav-item nav-child" data-search="5.5.3. run spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/5.5.3-Backend/"><b>5.5.3. </b>Run Spring Boot on EC2</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.6. deploy amazon s3 storage"><a href="/5-Workshop/5.6-S3/"><b>5.6. </b>Deploy Amazon S3 Storage</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.6.1. create two amazon s3 buckets"><a href="/5-Workshop/5.6-S3/5.6.1-Buckets/"><b>5.6.1. </b>Create Two Amazon S3 Buckets</a></li><li class="nav-item nav-child" data-search="5.6.2. prepare and upload product images to s3"><a href="/5-Workshop/5.6-S3/5.6.2-Images/"><b>5.6.2. </b>Prepare and upload product images to S3</a></li></ul></div></li><li class="nav-item nav-child is-parent-active" data-search="5.7. cloudfront and cognito integration"><a href="/5-Workshop/5.7-CloudFront-Cognito/"><b>5.7. </b>CloudFront and Cognito Integration</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.7.1. configure cloudfront origins, https and behaviors"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.1-CloudFront/"><b>5.7.1. </b>Configure CloudFront Origins, HTTPS and Behaviors</a></li><li class="nav-item nav-child" data-search="5.7.2. configure amazon cognito login for cloudfront"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.2-Cognito-Login/"><b>5.7.2. </b>Configure Amazon Cognito Login for CloudFront</a></li><li class="nav-item nav-child is-current" data-search="5.7.3. integrate and deploy frontend, backend, cognito"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/" aria-current="page"><b>5.7.3. </b>Integrate and deploy Frontend, Backend, Cognito</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.8. ci/cd, monitoring, and validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/"><b>5.8. </b>CI/CD, Monitoring, and Validation</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.8.1. connect github actions to aws with oidc"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.1-OIDC/"><b>5.8.1. </b>Connect GitHub Actions to AWS with OIDC</a></li><li class="nav-item nav-child" data-search="5.8.2. ci/cd deployment for the react frontend"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.2-Frontend/"><b>5.8.2. </b>CI/CD Deployment for the React Frontend</a></li><li class="nav-item nav-child" data-search="5.8.3. deploy backend spring boot with ci/cd"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/"><b>5.8.3. </b>Deploy Backend Spring Boot with CI/CD</a></li><li class="nav-item nav-child" data-search="5.8.4. cloudwatch monitoring and system validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.4-Monitoring/"><b>5.8.4. </b>CloudWatch Monitoring and System Validation</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.9. clean up aws resources"><a href="/5-Workshop/5.9-Cleanup/"><b>5.9. </b>Clean Up AWS Resources</a></li></ul></div></li><li class="nav-item nav-top" data-search="6. self-assessment"><a href="/6-Self-evaluation/"><b>6. </b>Self-Assessment</a></li><li class="nav-item nav-top" data-search="7. sharing and feedback"><a href="/7-Feedback/"><b>7. </b>Sharing and Feedback</a></li></ul>
+        <p class="empty-search" id="empty-search" hidden>No matching pages.</p>
+      </div>
+      <section class="sidebar-shortcuts">
+        <h3>More</h3>
+        <ul><li><a href="https://awsstudygroup.com/" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><img src="/images/aws-logo-white.png" alt=""></span>AWS Study Group - Blog</a></li><li><a href="https://www.facebook.com/groups/660548818043427" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22 0H2a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h10.7v-9.3H9.6V11h3.1V8.3c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.5.1 2.8.1v3.2h-1.9c-1.5 0-1.8.7-1.8 1.8V11h3.6l-.5 3.7h-3.1V24H22a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/></svg></span>AWS Study Group - FB Group</a></li></ul>
+      </section>
+      <section class="sidebar-footer">
+        <div><strong>Last updated</strong><br><span>18-11-2026</span></div>
+        <div><strong>Team</strong><br><span>First Cloud AI Journey</span></div>
+      </section>
+
+    </nav>
+    <button class="sidebar-shade" id="sidebar-shade" aria-label="Close menu" tabindex="-1"></button>
+
+    <section id="body" class="main-area page-body">
+      <div class="padding highlightable">
+        <div id="body-inner" class="content-inner section-content">
+          <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span aria-hidden="true">☰</span> Menu</button>
+<div class="breadcrumb"><a href="/">Internship Report</a><span aria-hidden="true">›</span><a href="/5-Workshop/">Workshop</a><span aria-hidden="true">›</span><a href="/5-Workshop/5.7-CloudFront-Cognito/">CloudFront and Cognito Integration</a><span aria-hidden="true">›</span><span aria-current="page">Integrate and deploy Frontend, Backend, Cognito</span></div>
+<h1>Integrate and deploy Frontend, Backend, Cognito</h1>
+<h2 id="step-1-prepare-node-js-and-frontend-source-on-ec2">Step 1 – Prepare Node.js and frontend source on EC2</h2>
+<p>Connect to <code>techvina-ec2-backend</code> using <strong>Session Manager</strong>, switch to <code>ubuntu</code>, and inspect the frontend:</p>
+<pre><code class="language-bash">sudo -iu ubuntu
+cd /home/ubuntu/projects/TechVina/frontend
+cat package.json</code></pre>
+<p>TechVina uses <strong>React 19</strong>, <strong>Vite 8</strong>, <code>react-oidc-context</code>, and <code>oidc-client-ts</code>. The EC2 instance initially did not have Node.js; NodeSource 24.x was installed:</p>
+<pre><code class="language-bash">curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt install -y nodejs
+node --version
+npm --version</code></pre>
+<p><strong>Actual versions:</strong> Node.js <code>v24.22.3</code>, npm <code>11.19.1</code>.</p>
+<h2 id="step-2-configure-frontend-environment-variables">Step 2 – Configure frontend environment variables</h2>
+<p>From <code>/home/ubuntu/projects/TechVina/frontend</code>, inspect the example file:</p>
+<pre><code class="language-bash">cat .env.example</code></pre>
+<p>Create <code>.env</code> in the same directory:</p>
+<pre><code class="language-bash">nano .env</code></pre>
+<p>Use values for <strong>your AWS account</strong>:</p>
+<pre><code class="language-dotenv">VITE_AWS_REGION=ap-southeast-1
+VITE_COGNITO_USER_POOL_ID=&lt;COGNITO_USER_POOL_ID&gt;
+VITE_COGNITO_CLIENT_ID=&lt;COGNITO_CLIENT_ID&gt;
+VITE_COGNITO_DOMAIN=https://&lt;COGNITO_PREFIX&gt;.auth.ap-southeast-1.amazoncognito.com
+VITE_COGNITO_REDIRECT_URI=https://&lt;CF_DOMAIN&gt;/
+VITE_COGNITO_LOGOUT_URI=https://&lt;CF_DOMAIN&gt;/
+VITE_API_BASE_URL=https://&lt;CF_DOMAIN&gt;</code></pre>
+<p>Actual TechVina API base URL:</p>
+<pre><code class="language-dotenv">VITE_API_BASE_URL=https://d3mmtr3bxttvgc.cloudfront.net</code></pre>
+<p><strong>Do not add a trailing <code>/</code> to <code>VITE_API_BASE_URL</code>.</strong> <code>frontend/src/services/api.js</code> concatenates the Base URL with endpoints that already begin with <code>/</code>:</p>
+<pre><code class="language-javascript">fetch(`${BASE_URL}${endpoint}`, {</code></pre>
+<p>A trailing slash in the Base URL creates <code>//api/...</code>, which does not match the intended <code>/api/*</code> behavior. In contrast, the Redirect and Logout URLs <strong>must have their trailing <code>/</code></strong> to match the Cognito callback and sign-out settings from 5.7.2.</p>
+<p>Verify:</p>
+<pre><code class="language-bash">grep '^VITE_API_BASE_URL=' .env</code></pre>
+<p>Keep <code>.env</code> out of Git. Never put DB passwords, JWT secrets, or AWS Access Keys in <code>VITE_*</code> variables: Vite exposes them in the compiled browser JavaScript.</p>
+<h2 id="step-3-install-dependencies-and-build-react-vite">Step 3 – Install dependencies and build React/Vite</h2>
+<p>From <code>frontend</code>:</p>
+<pre><code class="language-bash">npm ci
+npm audit</code></pre>
+<p>The actual initial audit found <strong>two high severity</strong> advisories affecting <code>vite</code> and <code>source-map-js</code>. They were resolved with:</p>
+<pre><code class="language-bash">npm audit fix
+npm audit</code></pre>
+<p><strong>Actual result:</strong> <code>found 0 vulnerabilities</code>. <code>npm audit fix</code> changes dependency versions and <code>package-lock.json</code>. Commit the updated lockfile to GitHub before configuring CI/CD in 5.8.2 so GitHub Actions' <code>npm ci</code> installs the same resolved versions.</p>
+<p>Build for production:</p>
+<pre><code class="language-bash">npm run build</code></pre>
+<p><strong>Actual result:</strong> Vite <code>v8.3.8</code>, <strong>390 modules transformed</strong>, <code>✓ built in 1.40s</code>. The rebuilt bundle after correcting the API URL included <code>dist/assets/index-BJaK_frI.js</code>.</p>
+<p>Inspect:</p>
+<pre><code class="language-bash">ls -lah dist
+ls -lah dist/images</code></pre>
+<p>The build must contain <code>dist/index.html</code>, <code>dist/assets/</code>, <code>dist/images/</code>, and <code>dist/favicon.svg</code>.</p>
+<h2 id="step-4-verify-ec2-iam-permissions-for-frontend-s3-uploads">Step 4 – Verify EC2 IAM permissions for frontend S3 uploads</h2>
+<p>Install <strong>AWS CLI v2</strong> on the Ubuntu x86_64 instance before running <code>aws s3</code>:</p>
+<pre><code class="language-bash">cd /tmp
+curl -fsSLO https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+unzip -oq awscli-exe-linux-x86_64.zip
+sudo ./aws/install --update
+aws --version</code></pre>
+<p>If AWS CLI v2 is already installed, check <code>aws --version</code> and do not repeat the installation.</p>
+<p>In <strong>5.3.2</strong>, the <code>techvina-ec2-ssm-role</code> role was assigned the <strong><code>techvina-frontend-s3-upload</code></strong> inline policy granting <code>s3:ListBucket</code> and <code>s3:PutObject</code> for <code>techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;</code>.</p>
+<p>On EC2:</p>
+<pre><code class="language-bash">aws sts get-caller-identity</code></pre>
+<p>The ARN should include <code>assumed-role/techvina-ec2-ssm-role/</code>. Verify the object listing permission:</p>
+<pre><code class="language-bash">aws s3 ls s3://techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;/</code></pre>
+<p>Before deployment, the bucket includes <code>PRE images/</code>. If <code>s3:ListBucket</code> returns <code>AccessDenied</code>, fix the inline policy from 5.3.2; do not create AWS Access Keys on EC2.</p>
+<h2 id="step-5-upload-the-frontend-build-to-s3">Step 5 – Upload the frontend build to S3</h2>
+<p>Run as <code>ubuntu</code> on EC2:</p>
+<pre><code class="language-bash">aws s3 sync /home/ubuntu/projects/TechVina/frontend/dist/ \
+  s3://techvina-frontend-&lt;AWS_ACCOUNT_ID&gt;/ \
+  --exclude &quot;images/*&quot; --no-progress</code></pre>
+<p>This uploads <code>index.html</code>, <code>favicon.svg</code>, and the latest <code>assets/</code> files. The <code>--exclude &quot;images/*&quot;</code> option keeps the image upload from 5.6.2 separate from application builds. Do <strong>not</strong> add <code>--delete</code>, which could remove uploaded images.</p>
+<p><strong>Actual output</strong> from the final build:</p>
+<pre><code class="language-text">upload: dist/assets/index-BJaK_frI.js to s3://techvina-frontend-668668940018/assets/index-BJaK_frI.js
+upload: dist/index.html to s3://techvina-frontend-668668940018/index.html
+upload: dist/favicon.svg to s3://techvina-frontend-668668940018/favicon.svg
+upload: dist/assets/index-DRjsPOsz.css to s3://techvina-frontend-668668940018/assets/index-DRjsPOsz.css</code></pre>
+<h2 id="step-6-invalidate-the-cloudfront-homepage">Step 6 – Invalidate the CloudFront homepage</h2>
+<p>Open <strong>CloudFront → Distributions → <code>techvina-cloudfront</code> → Invalidations → Create invalidation</strong>, select <strong>By paths</strong>, and enter:</p>
+<pre><code class="language-text">/
+/index.html</code></pre>
+<p>Choose <strong>Create invalidation</strong>. The actual invalidation reached <strong>Completed</strong> and ensured the cached HTML referenced the updated JavaScript bundle.</p>
+<h2 id="step-7-validate-api-images-and-react-router">Step 7 – Validate API, images, and React Router</h2>
+<p>Open:</p>
+<pre><code class="language-text">https://&lt;CF_DOMAIN&gt;/</code></pre>
+<p>Verify the banner, categories, and <strong>four featured products</strong>. Under <strong>F12 → Network → Fetch/XHR</strong>, inspect:</p>
+<div class="table-wrap"><table class="task-table"><thead><tr><th>Request</th><th>Expected result</th></tr></thead><tbody><tr><td><code>/api/danh-muc/active</code></td><td><code>200</code>, categories JSON</td></tr><tr><td><code>/api/san-pham/noi-bat</code></td><td><code>200</code>, four products in JSON</td></tr><tr><td><code>/images/products/...webp</code></td><td><code>200</code>, S3 image via CloudFront</td></tr><tr><td><code>/san-pham/21/21</code></td><td>Xiaomi 15 details rendered by React Router</td></tr><tr><td><code>/login</code></td><td>Frontend login page rendered</td></tr></tbody></table></div>
+<p>If requests appear as <code>//api/...</code> with <code>401</code>, remove the trailing slash from <code>VITE_API_BASE_URL</code>, then <strong>rebuild → sync to S3 → invalidate</strong>. If a client-side route returns S3 XML <code>AccessDenied</code>, verify <code>techvina-spa-routing</code> in <strong>5.7.1</strong> is associated with *<em>Default (</em>) → Viewer request**.</p>
+<p><img src="/images/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/03-frontend-products-actual.png" alt="TechVina storefront with categories and products" loading="lazy"></p>
+<p><img src="/images/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/04-product-detail-actual.png" alt="Xiaomi 15 product details rendered by React Router" loading="lazy"></p>
+<h2 id="step-8-test-cognito-sign-in-admin-role-and-sign-out">Step 8 – Test Cognito sign-in, ADMIN role, and sign-out</h2>
+<ol><li>Open <strong>Tài khoản → Đăng nhập với Amazon Cognito</strong>. The browser navigates to the Cognito Managed Login domain set up in 5.5.2.</li><li>Enter the ADMIN test account email created in 5.5.2, choose <strong>Next</strong>, enter its password, and choose <strong>Continue</strong>.</li><li>Cognito redirects back to <code>https://&lt;CF_DOMAIN&gt;/</code>. The account menu shows the signed-in email and <strong>ADMIN</strong> role.</li><li>Choose <strong>Đăng xuất</strong>. The website returns to a signed-out state, showing <strong>Tài khoản</strong> in the navigation.</li><li>Choose <strong>Đăng nhập với Amazon Cognito</strong> again and confirm Cognito displays <strong>Sign in</strong> rather than automatically restoring the previous ADMIN session.</li></ol>
+<p><img src="/images/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/05-cognito-signin-actual.png" alt="Amazon Cognito sign-in page" loading="lazy"></p>
+<p>Do not include passwords, authorization codes, tokens, or callback URLs containing a <code>code</code> parameter in documentation or screenshots. Seeing the ADMIN role in the frontend confirms authentication and role display, but is not a substitute for authorization tests on protected API operations.</p>
+
+        </div>
+      </div>
+      <a class="edge-navigation previous" href="/5-Workshop/5.7-CloudFront-Cognito/5.7.2-Cognito-Login/" aria-label="Previous page: Configure Amazon Cognito Login for CloudFront">‹</a><a class="edge-navigation next" href="/5-Workshop/5.8-CICD-Monitoring-Testing/" aria-label="Next page: CI/CD, Monitoring, and Validation">›</a>
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

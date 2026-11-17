@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1c222a" />
+    <title>Deploy Backend Spring Boot with CI/CD :: Internship Report</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" />
+    <link rel="stylesheet" href="/css/theme.css" />
+
+  </head>
+  <body class="page-inner">
+    <nav class="sidebar" id="sidebar" aria-label="Navigation">
+      <div class="sidebar-header">
+        <a class="brand-logo" href="/" aria-label="AWS"><img src="/images/aws-logo-white.png" alt="AWS"></a>
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Close menu">×</button>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="search-by">Search pages</label>
+          <input id="search-by" type="text" placeholder="Search..." autocomplete="off" />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+        </div>
+      </div>
+      <div class="site-nav" id="site-nav">
+        <ul><li class="nav-item nav-top" data-search="1. worklog"><a href="/1-Worklog/"><b>1. </b>Worklog</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="1.1. week 1"><a href="/1-Worklog/1.1-Week1/"><b>1.1. </b>Week 1</a></li><li class="nav-item nav-child" data-search="1.2. week 2"><a href="/1-Worklog/1.2-Week2/"><b>1.2. </b>Week 2</a></li><li class="nav-item nav-child" data-search="1.3. week 3"><a href="/1-Worklog/1.3-Week3/"><b>1.3. </b>Week 3</a></li><li class="nav-item nav-child" data-search="1.4. week 4"><a href="/1-Worklog/1.4-Week4/"><b>1.4. </b>Week 4</a></li><li class="nav-item nav-child" data-search="1.5. week 5"><a href="/1-Worklog/1.5-Week5/"><b>1.5. </b>Week 5</a></li><li class="nav-item nav-child" data-search="1.6. week 6"><a href="/1-Worklog/1.6-Week6/"><b>1.6. </b>Week 6</a></li><li class="nav-item nav-child" data-search="1.7. week 7"><a href="/1-Worklog/1.7-Week7/"><b>1.7. </b>Week 7</a></li><li class="nav-item nav-child" data-search="1.8. week 8"><a href="/1-Worklog/1.8-Week8/"><b>1.8. </b>Week 8</a></li><li class="nav-item nav-child" data-search="1.9. week 9"><a href="/1-Worklog/1.9-Week9/"><b>1.9. </b>Week 9</a></li><li class="nav-item nav-child" data-search="1.10. week 10"><a href="/1-Worklog/1.10-Week10/"><b>1.10. </b>Week 10</a></li><li class="nav-item nav-child" data-search="1.11. week 11"><a href="/1-Worklog/1.11-Week11/"><b>1.11. </b>Week 11</a></li><li class="nav-item nav-child" data-search="1.12. week 12"><a href="/1-Worklog/1.12-Week12/"><b>1.12. </b>Week 12</a></li></ul></div></li><li class="nav-item nav-top" data-search="2. proposal"><a href="/2-Proposal/"><b>2. </b>Proposal</a></li><li class="nav-item nav-top" data-search="3. blogs posted"><a href="/3-BlogsPosted/"><b>3. </b>Blogs Posted</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="3.1. blog 1"><a href="/3-BlogsPosted/3.1-Blog1/"><b>3.1. </b>Blog 1</a></li><li class="nav-item nav-child" data-search="3.2. blog 2"><a href="/3-BlogsPosted/3.2-Blog2/"><b>3.2. </b>Blog 2</a></li><li class="nav-item nav-child" data-search="3.3. blog 3"><a href="/3-BlogsPosted/3.3-Blog3/"><b>3.3. </b>Blog 3</a></li></ul></div></li><li class="nav-item nav-top" data-search="4. events participated"><a href="/4-EventParticipated/"><b>4. </b>Events Participated</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="4.1. event 1"><a href="/4-EventParticipated/4.1-Event1/"><b>4.1. </b>Event 1</a></li><li class="nav-item nav-child" data-search="4.2. event 2"><a href="/4-EventParticipated/4.2-Event2/"><b>4.2. </b>Event 2</a></li></ul></div></li><li class="nav-item nav-top is-parent-active" data-search="5. workshop"><a href="/5-Workshop/"><b>5. </b>Workshop</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.1. introduction"><a href="/5-Workshop/5.1-Workshop-overview/"><b>5.1. </b>Introduction</a></li><li class="nav-item nav-child" data-search="5.2. prerequisites"><a href="/5-Workshop/5.2-Prerequisites/"><b>5.2. </b>Prerequisites</a></li><li class="nav-item nav-child" data-search="5.3. iam and vpc setup"><a href="/5-Workshop/5.3-IAM-VPC/"><b>5.3. </b>IAM and VPC Setup</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.3.1. create vpc and subnets"><a href="/5-Workshop/5.3-IAM-VPC/5.3.1-VPC/"><b>5.3.1. </b>Create VPC and Subnets</a></li><li class="nav-item nav-child" data-search="5.3.2. security groups and iam role"><a href="/5-Workshop/5.3-IAM-VPC/5.3.2-Security-IAM/"><b>5.3.2. </b>Security Groups and IAM Role</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.4. deploy amazon rds mysql"><a href="/5-Workshop/5.4-RDS/"><b>5.4. </b>Deploy Amazon RDS MySQL</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.4.1. create amazon rds mysql"><a href="/5-Workshop/5.4-RDS/5.4.1-Database/"><b>5.4.1. </b>Create Amazon RDS MySQL</a></li><li class="nav-item nav-child" data-search="5.4.2. prepare mysql dataset"><a href="/5-Workshop/5.4-RDS/5.4.2-Import/"><b>5.4.2. </b>Prepare MySQL Dataset</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.5. deploy spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/"><b>5.5. </b>Deploy Spring Boot on EC2</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.5.1. launch ec2, install dependencies and initialize rds"><a href="/5-Workshop/5.5-EC2-Backend/5.5.1-Instance/"><b>5.5.1. </b>Launch EC2, Install Dependencies and Initialize RDS</a></li><li class="nav-item nav-child" data-search="5.5.2. create cognito user pool"><a href="/5-Workshop/5.5-EC2-Backend/5.5.2-Cognito-Bootstrap/"><b>5.5.2. </b>Create Cognito User Pool</a></li><li class="nav-item nav-child" data-search="5.5.3. run spring boot on ec2"><a href="/5-Workshop/5.5-EC2-Backend/5.5.3-Backend/"><b>5.5.3. </b>Run Spring Boot on EC2</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.6. deploy amazon s3 storage"><a href="/5-Workshop/5.6-S3/"><b>5.6. </b>Deploy Amazon S3 Storage</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.6.1. create two amazon s3 buckets"><a href="/5-Workshop/5.6-S3/5.6.1-Buckets/"><b>5.6.1. </b>Create Two Amazon S3 Buckets</a></li><li class="nav-item nav-child" data-search="5.6.2. prepare and upload product images to s3"><a href="/5-Workshop/5.6-S3/5.6.2-Images/"><b>5.6.2. </b>Prepare and upload product images to S3</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.7. cloudfront and cognito integration"><a href="/5-Workshop/5.7-CloudFront-Cognito/"><b>5.7. </b>CloudFront and Cognito Integration</a><div class="nav-children nav-collapsed"><ul><li class="nav-item nav-child" data-search="5.7.1. configure cloudfront origins, https and behaviors"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.1-CloudFront/"><b>5.7.1. </b>Configure CloudFront Origins, HTTPS and Behaviors</a></li><li class="nav-item nav-child" data-search="5.7.2. configure amazon cognito login for cloudfront"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.2-Cognito-Login/"><b>5.7.2. </b>Configure Amazon Cognito Login for CloudFront</a></li><li class="nav-item nav-child" data-search="5.7.3. integrate and deploy frontend, backend, cognito"><a href="/5-Workshop/5.7-CloudFront-Cognito/5.7.3-Integration/"><b>5.7.3. </b>Integrate and deploy Frontend, Backend, Cognito</a></li></ul></div></li><li class="nav-item nav-child is-parent-active" data-search="5.8. ci/cd, monitoring, and validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/"><b>5.8. </b>CI/CD, Monitoring, and Validation</a><div class="nav-children"><ul><li class="nav-item nav-child" data-search="5.8.1. connect github actions to aws with oidc"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.1-OIDC/"><b>5.8.1. </b>Connect GitHub Actions to AWS with OIDC</a></li><li class="nav-item nav-child" data-search="5.8.2. ci/cd deployment for the react frontend"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.2-Frontend/"><b>5.8.2. </b>CI/CD Deployment for the React Frontend</a></li><li class="nav-item nav-child is-current" data-search="5.8.3. deploy backend spring boot with ci/cd"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/" aria-current="page"><b>5.8.3. </b>Deploy Backend Spring Boot with CI/CD</a></li><li class="nav-item nav-child" data-search="5.8.4. cloudwatch monitoring and system validation"><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.4-Monitoring/"><b>5.8.4. </b>CloudWatch Monitoring and System Validation</a></li></ul></div></li><li class="nav-item nav-child" data-search="5.9. clean up aws resources"><a href="/5-Workshop/5.9-Cleanup/"><b>5.9. </b>Clean Up AWS Resources</a></li></ul></div></li><li class="nav-item nav-top" data-search="6. self-assessment"><a href="/6-Self-evaluation/"><b>6. </b>Self-Assessment</a></li><li class="nav-item nav-top" data-search="7. sharing and feedback"><a href="/7-Feedback/"><b>7. </b>Sharing and Feedback</a></li></ul>
+        <p class="empty-search" id="empty-search" hidden>No matching pages.</p>
+      </div>
+      <section class="sidebar-shortcuts">
+        <h3>More</h3>
+        <ul><li><a href="https://awsstudygroup.com/" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><img src="/images/aws-logo-white.png" alt=""></span>AWS Study Group - Blog</a></li><li><a href="https://www.facebook.com/groups/660548818043427" target="_blank" rel="noopener"><span class="shortcut-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22 0H2a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h10.7v-9.3H9.6V11h3.1V8.3c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.5.1 2.8.1v3.2h-1.9c-1.5 0-1.8.7-1.8 1.8V11h3.6l-.5 3.7h-3.1V24H22a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/></svg></span>AWS Study Group - FB Group</a></li></ul>
+      </section>
+      <section class="sidebar-footer">
+        <div><strong>Last updated</strong><br><span>18-11-2026</span></div>
+        <div><strong>Team</strong><br><span>First Cloud AI Journey</span></div>
+      </section>
+
+    </nav>
+    <button class="sidebar-shade" id="sidebar-shade" aria-label="Close menu" tabindex="-1"></button>
+
+    <section id="body" class="main-area page-body">
+      <div class="padding highlightable">
+        <div id="body-inner" class="content-inner section-content">
+          <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="false"><span aria-hidden="true">☰</span> Menu</button>
+<div class="breadcrumb"><a href="/">Internship Report</a><span aria-hidden="true">›</span><a href="/5-Workshop/">Workshop</a><span aria-hidden="true">›</span><a href="/5-Workshop/5.8-CICD-Monitoring-Testing/">CI/CD, Monitoring, and Validation</a><span aria-hidden="true">›</span><span aria-current="page">Deploy Backend Spring Boot with CI/CD</span></div>
+<h1>Deploy Backend Spring Boot with CI/CD</h1>
+<h2 id="step-1-verify-the-backend-on-ec2-before-deployment">Step 1 – Verify the Backend on EC2 before deployment</h2>
+<p>The <strong>TechVina Backend</strong> runs as a Spring Boot application on the <code>techvina-ec2-backend</code> EC2 instance (Ubuntu 24.04) in <strong>Singapore (<code>ap-southeast-1</code>)</strong>. The existing <code>techvina-backend.service</code> was configured in <strong>section 5.5</strong>. GitHub Actions updates the deployed JAR without recreating the EC2 instance or the RDS database.</p>
+<ol><li>Open <strong>AWS Systems Manager → Session Manager</strong> and connect to the Backend instance.</li><li>Verify the service and HTTP health endpoint:</li></ol>
+<pre><code class="language-bash">sudo systemctl is-active techvina-backend.service</code></pre>
+<pre><code class="language-text">active</code></pre>
+<pre><code class="language-bash">curl -sS --max-time 5 http://127.0.0.1:8080/actuator/health</code></pre>
+<pre><code class="language-json">{&quot;status&quot;:&quot;UP&quot;}</code></pre>
+<ol><li>Verify that AWS CLI, the JAR validation utility and the deployment lock utility are available:</li></ol>
+<pre><code class="language-bash">aws --version</code></pre>
+<p>The AWS CLI version recorded during deployment was <strong>v2.35.21</strong>. The utility checks returned:</p>
+<pre><code class="language-bash">command -v flock</code></pre>
+<pre><code class="language-text">/usr/bin/flock</code></pre>
+<pre><code class="language-bash">command -v unzip</code></pre>
+<pre><code class="language-text">/usr/bin/unzip</code></pre>
+<p>If <code>unzip</code> is not installed, install it on Ubuntu and verify the path:</p>
+<pre><code class="language-bash">sudo apt-get install -y unzip
+command -v unzip</code></pre>
+<pre><code class="language-text">/usr/bin/unzip</code></pre>
+<p>The EC2 instance role <code>techvina-ec2-ssm-role</code> grants <code>s3:GetObject</code> on <code>releases/*</code> in the Backend Artifacts bucket. The GitHub Actions Backend role and OIDC trust configuration were created in <strong>section 5.8.1</strong>.</p>
+<h2 id="step-2-prepare-the-github-workflow-and-deployment-scripts">Step 2 – Prepare the GitHub workflow and deployment scripts</h2>
+<p>Open the <strong>TechVina</strong> repository in VS Code and work on the <code>master</code> branch. The deployment-related files are:</p>
+<pre><code class="language-text">TechVina/
+├── backend/
+│   ├── pom.xml
+│   └── src/
+└── .github/
+    ├── workflows/
+    │   └── deploy-backend.yml
+    ├── scripts/
+    │   └── deploy-backend.sh
+    └── tests/
+        └── test-backend-rollback.sh</code></pre>
+<p>The <strong><code>techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;</code></strong> bucket stores two artifacts under <code>releases/</code>:</p>
+<pre><code class="language-text">releases/backend-&lt;COMMIT_SHA&gt;.jar
+releases/deploy-backend-&lt;COMMIT_SHA&gt;.sh</code></pre>
+<p>In the configuration examples below, replace <code>&lt;AWS_ACCOUNT_ID&gt;</code> with the AWS account ID and <code>&lt;EC2_INSTANCE_ID&gt;</code> with the actual Backend EC2 instance ID. The deployed resources were verified in <code>ap-southeast-1</code>.</p>
+<h2 id="step-3-configure-the-deployment-backup-and-rollback-script">Step 3 – Configure the deployment, backup and rollback script</h2>
+<p>Open <code>.github/scripts/deploy-backend.sh</code>. The script downloads the JAR identified by a commit SHA, validates its archive structure with <code>unzip</code>, backs up the live JAR and restarts the Spring Boot service through <code>systemctl</code>. If deployment fails after the JAR replacement begins, the <code>on_exit()</code> handler restores the backup and checks <code>/actuator/health</code>. A <code>flock</code> lock prevents overlapping deployments.</p>
+<p>Use the following script and replace <code>&lt;AWS_ACCOUNT_ID&gt;</code> with the account used for deployment:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# Cau hinh TechVina Backend
+BASE=&quot;/home/ubuntu/projects/TechVina/backend&quot;
+LIVE=&quot;$BASE/target/backend-0.0.1-SNAPSHOT.jar&quot;
+SERVICE=&quot;techvina-backend.service&quot;
+BACKUP_DIR=&quot;$BASE/backups&quot;
+
+BUCKET=&quot;techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;&quot;
+REGION=&quot;ap-southeast-1&quot;
+HEALTH_URL=&quot;http://127.0.0.1:8080/actuator/health&quot;
+
+# Nhan commit SHA tu GitHub Actions
+COMMIT_SHA=&quot;${1:-}&quot;
+
+if [[ ! &quot;$COMMIT_SHA&quot; =~ ^[a-f0-9]{40}$ ]]; then
+  echo &quot;ERROR: Invalid commit SHA&quot;
+  exit 1
+fi
+
+# Script phai chay voi quyen root
+if [[ &quot;$EUID&quot; -ne 0 ]]; then
+  echo &quot;ERROR: Root permission required&quot;
+  exit 1
+fi
+
+# Ngan hai lan trien khai chay dong thoi
+exec 9&gt;/run/lock/techvina-backend-deploy.lock
+flock -n 9 || {
+  echo &quot;ERROR: Another deployment is running&quot;
+  exit 1
+}
+
+# Tao thu muc sao luu
+install -d -o ubuntu -g ubuntu -m 700 &quot;$BACKUP_DIR&quot;
+
+NEW_JAR=$(mktemp &quot;$BASE/target/.deploy-XXXXXX.jar&quot;)
+BACKUP=&quot;&quot;
+SWITCH_STARTED=false
+DEPLOY_OK=false
+
+# Kiem tra trang thai ung dung
+wait_for_health() {
+  for i in $(seq 1 45); do
+    RESPONSE=$(curl -fsS --max-time 3 \
+      &quot;$HEALTH_URL&quot; 2&gt;/dev/null || true)
+
+    if [[ &quot;$RESPONSE&quot; == '{&quot;status&quot;:&quot;UP&quot;}' ]]; then
+      return 0
+    fi
+
+    sleep 2
+  done
+
+  return 1
+}
+
+# Tu dong rollback neu trien khai that bai
+on_exit() {
+  STATUS=$?
+  trap - EXIT
+
+  rm -f &quot;$NEW_JAR&quot;
+
+  if [[ &quot;$SWITCH_STARTED&quot; == true &amp;&amp;
+        &quot;$DEPLOY_OK&quot; == false ]]; then
+
+    echo &quot;DEPLOY FAILED - Starting rollback&quot;
+
+    systemctl stop &quot;$SERVICE&quot; || true
+
+    if install -o ubuntu -g ubuntu -m 600 \
+      &quot;$BACKUP&quot; &quot;$LIVE&quot; &amp;&amp;
+      systemctl start &quot;$SERVICE&quot;; then
+
+      if wait_for_health; then
+        echo &quot;ROLLBACK SUCCESS&quot;
+      else
+        echo &quot;ERROR: Rollback health check failed&quot;
+      fi
+    else
+      echo &quot;ERROR: Could not restore Backend&quot;
+    fi
+
+    STATUS=1
+  fi
+
+  exit &quot;$STATUS&quot;
+}
+
+trap on_exit EXIT
+
+echo &quot;Deploying commit: $COMMIT_SHA&quot;
+
+# Buoc 1: Tai JAR moi tu Amazon S3
+aws s3 cp \
+  &quot;s3://$BUCKET/releases/backend-$COMMIT_SHA.jar&quot; \
+  &quot;$NEW_JAR&quot; \
+  --region &quot;$REGION&quot; \
+  --only-show-errors
+
+# Buoc 2: Kiem tra file JAR
+test -s &quot;$NEW_JAR&quot;
+unzip -tq &quot;$NEW_JAR&quot; &gt;/dev/null
+
+# Buoc 3: Kiem tra Backend hien tai
+test -s &quot;$LIVE&quot;
+systemctl is-active --quiet &quot;$SERVICE&quot;
+
+# Buoc 4: Sao luu phien ban dang chay
+BACKUP=$(mktemp \
+  &quot;$BACKUP_DIR/backend-before-$(date -u +%Y%m%dT%H%M%SZ)-XXXXXX.jar&quot;)
+
+install -o ubuntu -g ubuntu -m 600 &quot;$LIVE&quot; &quot;$BACKUP&quot;
+
+echo &quot;Backup saved: $BACKUP&quot;
+
+# Buoc 5: Thay the JAR va khoi dong lai
+SWITCH_STARTED=true
+
+systemctl stop &quot;$SERVICE&quot;
+
+install -o ubuntu -g ubuntu -m 600 \
+  &quot;$NEW_JAR&quot; &quot;$LIVE&quot;
+
+systemctl start &quot;$SERVICE&quot;
+
+# Buoc 6: Kiem tra Health Check
+echo &quot;Checking Backend health...&quot;
+
+if wait_for_health; then
+  DEPLOY_OK=true
+  echo &quot;DEPLOY SUCCESS&quot;
+  echo &quot;Commit: $COMMIT_SHA&quot;
+  echo &quot;Health: $RESPONSE&quot;
+else
+  echo &quot;ERROR: Backend health check failed&quot;
+  exit 1
+fi
+
+
+# Buoc 7: Don dep Backup cu sau khi Deploy thanh cong
+echo &quot;Cleaning up old Backend backups...&quot;
+
+# Lay danh sach Backup tu dong, moi nhat truoc
+mapfile -t BACKUPS &lt; &lt;(
+  find &quot;$BACKUP_DIR&quot; -maxdepth 1 -type f \
+    -name 'backend-before-????????T??????Z-*.jar' \
+    -printf '%f\n' | LC_ALL=C sort -r
+)
+
+# Chi giu lai 3 ban Backup tu dong moi nhat
+if (( ${#BACKUPS[@]} &gt; 3 )); then
+  for OLD_BACKUP in &quot;${BACKUPS[@]:3}&quot;; do
+    rm -f -- &quot;$BACKUP_DIR/$OLD_BACKUP&quot; ||
+      echo &quot;WARNING: Could not delete $OLD_BACKUP&quot;
+  done
+fi
+
+echo &quot;Backup cleanup completed&quot;</code></pre>
+<p>After a successful deployment, the script retains up to <strong>the three newest automatically created backups</strong> in <code>backend/backups/</code>. Rollback on the actual EC2 instance is only attempted if an error occurs after the JAR switch has started; no rollback happened during the successful deployment.</p>
+<h2 id="step-4-test-rollback-behavior-using-a-mock-environment">Step 4 – Test rollback behavior using a mock environment</h2>
+<p>Open <code>.github/tests/test-backend-rollback.sh</code>. The test extracts the actual deployment script's <code>on_exit()</code> function, but mocks <code>systemctl</code>, <code>install</code>, JAR files and the health check in a temporary directory. It never stops the production Backend on EC2.</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# Xac dinh thu muc project
+ROOT=&quot;$(cd &quot;$(dirname &quot;${BASH_SOURCE[0]}&quot;)/../..&quot; &amp;&amp; pwd)&quot;
+DEPLOY_SCRIPT=&quot;$ROOT/.github/scripts/deploy-backend.sh&quot;
+
+# Tao moi truong thu nghiem tam
+TEST_DIR=&quot;$(mktemp -d)&quot;
+trap 'rm -rf &quot;$TEST_DIR&quot;' EXIT
+
+LIVE=&quot;$TEST_DIR/backend.jar&quot;
+BACKUP=&quot;$TEST_DIR/backend-backup.jar&quot;
+NEW_JAR=&quot;$TEST_DIR/backend-new.jar&quot;
+SERVICE=&quot;techvina-backend.service&quot;
+
+# Gia lap JAR cu va JAR moi bi loi
+printf 'BACKEND_VERSION_OK\n' &gt; &quot;$BACKUP&quot;
+printf 'BACKEND_VERSION_FAILED\n' &gt; &quot;$LIVE&quot;
+printf 'TEMPORARY_JAR\n' &gt; &quot;$NEW_JAR&quot;
+
+SWITCH_STARTED=true
+DEPLOY_OK=false
+
+# Gia lap systemctl, khong dung den EC2
+systemctl() {
+  case &quot;$1&quot; in
+    stop|start) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# Gia lap lenh install de khoi phuc file
+install() {
+  local source_file=&quot;${@: -2:1}&quot;
+  local target_file=&quot;${@: -1}&quot;
+  cp &quot;$source_file&quot; &quot;$target_file&quot;
+}
+
+# Gia lap Health Check sau Rollback
+wait_for_health() {
+  cmp -s &quot;$LIVE&quot; &quot;$BACKUP&quot;
+}
+
+# Lay ham Rollback tu script trien khai that
+source &lt;(sed -n '/^on_exit() {/,/^}/p' &quot;$DEPLOY_SCRIPT&quot;)
+
+# Gia lap trien khai that bai
+set +e
+OUTPUT=&quot;$( (set +e; false; on_exit) 2&gt;&amp;1 )&quot;
+EXIT_CODE=$?
+set -e
+
+# Xac minh ket qua Rollback
+[[ &quot;$EXIT_CODE&quot; -eq 1 ]]
+[[ &quot;$OUTPUT&quot; == *&quot;ROLLBACK SUCCESS&quot;* ]]
+cmp -s &quot;$LIVE&quot; &quot;$BACKUP&quot;
+[[ ! -e &quot;$NEW_JAR&quot; ]]
+
+echo &quot;ROLLBACK_TEST_OK&quot;
+echo &quot;Exit code: $EXIT_CODE&quot;
+echo &quot;Backup restored successfully&quot;
+echo &quot;Temporary JAR removed&quot;</code></pre>
+<p>From the repository root, open <strong>Git Bash</strong> in VS Code on Windows and run:</p>
+<pre><code class="language-bash">bash .github/tests/test-backend-rollback.sh</code></pre>
+<p><strong>Actual Git Bash output:</strong></p>
+<pre><code class="language-text">ROLLBACK_TEST_OK
+Exit code: 1
+Backup restored successfully
+Temporary JAR removed</code></pre>
+<p><code>Exit code: 1</code> is the intentionally simulated failed deployment. The overall rollback test reports <code>ROLLBACK_TEST_OK</code>. This confirms the rollback logic in the mock environment, <strong>not a deliberately induced production EC2 failure</strong>.</p>
+<h2 id="step-5-configure-the-backend-github-actions-workflow">Step 5 – Configure the Backend GitHub Actions workflow</h2>
+<p>Open <code>.github/workflows/deploy-backend.yml</code>. This workflow uses <strong>Java 21</strong>, <strong>Maven</strong>, OIDC and SSM to deploy to the EC2 instance. The full workflow configuration is:</p>
+<pre><code class="language-yaml">name: Build TechVina Backend
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - &quot;backend/**&quot;
+      - &quot;.github/workflows/deploy-backend.yml&quot;
+      - &quot;.github/scripts/**&quot;
+      - &quot;.github/tests/**&quot;
+
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: &quot;Deploy Backend to EC2&quot;
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy-techvina-backend
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Spring Boot Backend
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      # Bước 1: Lấy source code
+      - name: Checkout source code
+        uses: actions/checkout@v7
+
+      # Bước 2: Cài đặt Java 21
+      - name: Setup Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: &quot;21&quot;
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+
+      # Bước 3: Build Spring Boot bằng Maven
+      - name: Build Backend
+        run: mvn -B -ntp clean package -DskipTests
+
+      # Bước 4: Kiểm tra file JAR
+      - name: Verify JAR file
+        run: test -s target/backend-0.0.1-SNAPSHOT.jar
+
+      # Kiểm tra thông tin OIDC thực tế
+      - name: Debug OIDC claims
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const token = await core.getIDToken('sts.amazonaws.com');
+            const payload = JSON.parse(
+              Buffer.from(token.split('.')[1], 'base64url').toString('utf8')
+            );
+            core.info('OIDC sub: ' + payload.sub);
+            core.info('OIDC aud: ' + payload.aud);
+            core.info('OIDC iss: ' + payload.iss);
+
+      # Bước 5: Xác thực AWS bằng GitHub OIDC
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::&lt;AWS_ACCOUNT_ID&gt;:role/techvina-github-actions-backend-role
+          aws-region: ap-southeast-1
+
+      # Bước 6: Kiểm tra xác thực AWS
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      # Bước 7: Upload file JAR lên Amazon S3
+      - name: Upload Backend JAR to S3
+        run: |
+          aws s3 cp target/backend-0.0.1-SNAPSHOT.jar \
+            &quot;s3://techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;/releases/backend-${GITHUB_SHA}.jar&quot; \
+            --region ap-southeast-1 \
+            --no-progress \
+            --only-show-errors
+
+      # Kiem tra cu phap script trien khai
+      - name: Validate Backend deployment script
+        run: bash -n &quot;$GITHUB_WORKSPACE/.github/scripts/deploy-backend.sh&quot;
+
+      # Kiem thu logic Rollback
+      - name: Test backend rollback logic
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash &quot;$GITHUB_WORKSPACE/.github/tests/test-backend-rollback.sh&quot;
+
+      # Upload script trien khai len Amazon S3
+      - name: Upload Backend deployment script to S3
+        run: |
+          aws s3 cp \
+            &quot;$GITHUB_WORKSPACE/.github/scripts/deploy-backend.sh&quot; \
+            &quot;s3://techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;/releases/deploy-backend-${GITHUB_SHA}.sh&quot; \
+            --region ap-southeast-1 \
+            --no-progress \
+            --only-show-errors
+
+      # Bước 8: Kiểm tra GitHub Actions gửi lệnh đến EC2
+      - name: Verify SSM connection to EC2
+        run: |
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids &lt;EC2_INSTANCE_ID&gt; \
+            --document-name AWS-RunShellScript \
+            --parameters 'commands=[&quot;echo TechVina SSM connection OK&quot;]' \
+            --region ap-southeast-1 \
+            --query 'Command.CommandId' \
+            --output text)
+
+          echo &quot;SSM Command ID: $COMMAND_ID&quot;
+
+          aws ssm wait command-executed \
+            --command-id &quot;$COMMAND_ID&quot; \
+            --instance-id &lt;EC2_INSTANCE_ID&gt; \
+            --region ap-southeast-1
+
+          aws ssm get-command-invocation \
+            --command-id &quot;$COMMAND_ID&quot; \
+            --instance-id &lt;EC2_INSTANCE_ID&gt; \
+            --region ap-southeast-1 \
+            --query '{Status:Status,Output:StandardOutputContent}' \
+            --output json
+
+      # Bước 9: Kiểm tra script triển khai trên EC2 qua SSM
+      - name: Verify deployment script on EC2
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cat &gt; ssm-script-check.json &lt;&lt;EOF
+          {
+            &quot;commands&quot;: [
+              &quot;aws s3 cp s3://techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;/releases/deploy-backend-${GITHUB_SHA}.sh /tmp/deploy-backend-${GITHUB_SHA}.sh --region ap-southeast-1 --only-show-errors &amp;&amp; bash -n /tmp/deploy-backend-${GITHUB_SHA}.sh &amp;&amp; echo SSM_SCRIPT_CHECK_OK&quot;
+            ]
+          }
+          EOF
+
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids &lt;EC2_INSTANCE_ID&gt; \
+            --document-name AWS-RunShellScript \
+            --parameters file://ssm-script-check.json \
+            --region ap-southeast-1 \
+            --query 'Command.CommandId' \
+            --output text)
+
+          echo &quot;SSM Command ID: $COMMAND_ID&quot;
+
+          aws ssm wait command-executed \
+            --command-id &quot;$COMMAND_ID&quot; \
+            --instance-id &lt;EC2_INSTANCE_ID&gt; \
+            --region ap-southeast-1
+
+          aws ssm get-command-invocation \
+            --command-id &quot;$COMMAND_ID&quot; \
+            --instance-id &lt;EC2_INSTANCE_ID&gt; \
+            --region ap-southeast-1 \
+            --query '{Status:Status,Output:StandardOutputContent}' \
+            --output json
+
+      # Buoc 10: Tu dong trien khai Backend qua SSM
+      - name: Deploy Backend to EC2 via SSM
+        if: ${{ github.ref == 'refs/heads/master' &amp;&amp; (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' &amp;&amp; inputs.deploy == true)) }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          INSTANCE_ID=&quot;&lt;EC2_INSTANCE_ID&gt;&quot;
+          REGION=&quot;ap-southeast-1&quot;
+
+          # Tao lenh SSM de tai va chay script
+          cat &gt; ssm-deploy.json &lt;&lt;EOF
+          {
+            &quot;commands&quot;: [
+              &quot;aws s3 cp s3://techvina-backend-artifacts-&lt;AWS_ACCOUNT_ID&gt;/releases/deploy-backend-${GITHUB_SHA}.sh /tmp/deploy-backend-${GITHUB_SHA}.sh --region ${REGION} --only-show-errors &amp;&amp; bash -n /tmp/deploy-backend-${GITHUB_SHA}.sh &amp;&amp; sudo bash /tmp/deploy-backend-${GITHUB_SHA}.sh ${GITHUB_SHA}&quot;
+            ],
+            &quot;executionTimeout&quot;: [&quot;600&quot;]
+          }
+          EOF
+
+          COMMAND_ID=$(aws ssm send-command \
+            --instance-ids &quot;$INSTANCE_ID&quot; \
+            --document-name AWS-RunShellScript \
+            --parameters file://ssm-deploy.json \
+            --region &quot;$REGION&quot; \
+            --query 'Command.CommandId' \
+            --output text)
+
+          echo &quot;SSM Command ID: $COMMAND_ID&quot;
+
+          # Theo doi qua trinh trien khai
+          STATUS=&quot;Pending&quot;
+
+          for i in $(seq 1 60); do
+            STATUS=$(aws ssm get-command-invocation \
+              --command-id &quot;$COMMAND_ID&quot; \
+              --instance-id &quot;$INSTANCE_ID&quot; \
+              --region &quot;$REGION&quot; \
+              --query Status \
+              --output text 2&gt;/dev/null || echo Pending)
+
+            case &quot;$STATUS&quot; in
+              Success|Failed|Cancelled|TimedOut|DeliveryTimedOut|ExecutionTimedOut|Undeliverable|Terminated)
+                break
+                ;;
+            esac
+
+            sleep 10
+          done
+
+          # Hien thi ket qua trien khai
+          aws ssm get-command-invocation \
+            --command-id &quot;$COMMAND_ID&quot; \
+            --instance-id &quot;$INSTANCE_ID&quot; \
+            --region &quot;$REGION&quot; \
+            --query '{Status:Status,ResponseCode:ResponseCode,Output:StandardOutputContent,Error:StandardErrorContent}' \
+            --output json
+
+          test &quot;$STATUS&quot; = &quot;Success&quot;</code></pre>
+<p>Execution sequence: <code>Checkout source code</code> → <code>Setup Java 21</code> → <code>mvn clean package -DskipTests</code> → JAR verification → AWS OIDC authentication → JAR upload to S3 → deployment script validation and mocked rollback test → script upload to S3 → SSM connectivity and remote script checks → deployment through SSM.</p>
+<p>The <code>push</code> trigger handles changes under <code>backend/**</code>, <code>.github/workflows/deploy-backend.yml</code>, <code>.github/scripts/**</code> and <code>.github/tests/**</code> on <code>master</code>. The <code>workflow_dispatch</code> input <code>deploy</code> defaults to <code>false</code>, but this skips <strong>only the final deployment step</strong>: build, artifact uploads and SSM verification steps still run.</p>
+<h2 id="step-6-review-changes-commit-and-push">Step 6 – Review changes, commit and push</h2>
+<p>In <strong>Git Bash</strong> at the <code>TechVina</code> repository root, review the updated deployment files:</p>
+<pre><code class="language-bash">git --no-pager diff -- .github/workflows/deploy-backend.yml .github/scripts/deploy-backend.sh</code></pre>
+<p>Ensure that the Backend role ARN, S3 bucket name and EC2 instance ID refer to the resources provisioned in your AWS account. Stage the updates:</p>
+<pre><code class="language-bash">git add .github/workflows/deploy-backend.yml .github/scripts/deploy-backend.sh</code></pre>
+<pre><code class="language-bash">git status --short</code></pre>
+<p><strong>Actual Git Bash output:</strong></p>
+<pre><code class="language-text">M  .github/scripts/deploy-backend.sh
+M  .github/workflows/deploy-backend.yml</code></pre>
+<p>Commit the changes:</p>
+<pre><code class="language-bash">git commit -m &quot;ci: update backend deployment workflow for AWS&quot;</code></pre>
+<pre><code class="language-text">[master 64b4a47] ci: update backend deployment workflow for AWS
+ 2 files changed, 13 insertions(+), 13 deletions(-)</code></pre>
+<p>Push the commit to the deployment branch:</p>
+<pre><code class="language-bash">git push origin master</code></pre>
+<p>This push triggers the Backend deployment workflow. When its deploy step runs, it <strong>replaces the live EC2 JAR and restarts Spring Boot</strong>. Verify that the current Backend is healthy before pushing.</p>
+<h2 id="step-7-verify-github-actions-and-the-ssm-deployment-results">Step 7 – Verify GitHub Actions and the SSM deployment results</h2>
+<ol><li>Open <strong>GitHub → Actions → Build TechVina Backend</strong> and select the run for commit <code>64b4a47</code>.</li><li>Verify that <strong>Build Spring Boot Backend</strong> completed the Maven build, OIDC authentication, S3 artifact uploads, rollback test and <code>Deploy Backend to EC2 via SSM</code>.</li><li>Expand <strong>Deploy Backend to EC2 via SSM</strong> to inspect the SSM command status, JAR backup and health check.</li></ol>
+<p>Actual deployment result: <strong>Success – 1 minute 28 seconds</strong>.</p>
+<p><img src="/images/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/01-backend-actions-success.png" alt="Successful Backend workflow run in GitHub Actions" loading="lazy"></p>
+<p><strong>Actual SSM and deployment script output (excerpt):</strong></p>
+<pre><code class="language-text">SSM command status: Success
+ResponseCode: 0
+Deploying commit: 64b4a4732f64cac5dd7934982d0bfc3e0cbb74d5
+Backup saved: /home/ubuntu/projects/TechVina/backend/backups/backend-before-20261113T152128Z-Suq5VZ.jar
+Checking Backend health...
+DEPLOY SUCCESS
+Commit: 64b4a4732f64cac5dd7934982d0bfc3e0cbb74d5
+Health: {&quot;status&quot;:&quot;UP&quot;}
+Cleaning up old Backend backups...
+Backup cleanup completed</code></pre>
+<p><img src="/images/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/02-ssm-deploy-success.png" alt="SSM deployment result with Success status and response code 0" loading="lazy"></p>
+<p>The backup file was created before the live JAR was replaced. Spring Boot subsequently restarted and returned <code>{&quot;status&quot;:&quot;UP&quot;}</code>. The <code>DEPLOY SUCCESS</code> output confirms that this release succeeded without entering rollback.</p>
+<h2 id="step-8-verify-the-backend-and-website-after-deployment">Step 8 – Verify the Backend and website after deployment</h2>
+<p>On EC2, use Session Manager to verify the Backend service and health endpoint:</p>
+<pre><code class="language-bash">sudo systemctl is-active techvina-backend.service
+curl -sS --max-time 5 http://127.0.0.1:8080/actuator/health</code></pre>
+<pre><code class="language-text">active
+{&quot;status&quot;:&quot;UP&quot;}</code></pre>
+<p>Open the website through CloudFront, browse the product list and open a product detail page. During the TechVina verification, the Xiaomi 15 page loaded product details, variants, colors, images and inventory information from the application.</p>
+<p><img src="/images/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.3-Backend/03-backend-product-detail.png" alt="Product details remain available through the Backend API after deployment" loading="lazy"></p>
+<p>The GitHub Actions pipeline built the JAR with Maven, uploaded the artifacts to S3, sent the SSM command to EC2, created a backup, replaced the JAR, restarted Spring Boot and passed its health check. The website and product data remained accessible after deployment.</p>
+
+        </div>
+      </div>
+      <a class="edge-navigation previous" href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.2-Frontend/" aria-label="Previous page: CI/CD Deployment for the React Frontend">‹</a><a class="edge-navigation next" href="/5-Workshop/5.8-CICD-Monitoring-Testing/5.8.4-Monitoring/" aria-label="Next page: CloudWatch Monitoring and System Validation">›</a>
+    </section>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
